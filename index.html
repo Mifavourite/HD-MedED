@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+  <title>Helpers Dynasty MedEd</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset & Base */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+    body { scroll-behavior: smooth; color: #000; }
+    a { text-decoration: none; color: inherit; }
+
+    /* Colors */
+    :root {
+      --gold: #FFD700;
+      --blue: #1E3A8A;
+      --white: #ffffff;
+      --red: #DC2626;
+      --black: #000000;
+    }
+
+    /* Navbar */
+    nav {
+      position: fixed; top: 0; width: 100%; background: var(--white); box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      z-index: 1000; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem;
+    }
+    nav .logo {
+      display: flex; 
+      align-items: center; 
+      gap: 10px;
+    }
+    nav .logo img { height: 50px; }
+    nav .logo span { font-weight: 700; color: var(--gold); font-size: 1.5rem; }
+    nav ul { list-style: none; display: flex; gap: 2rem; }
+    nav ul li a { font-weight: 600; color: var(--blue); transition: 0.3s; }
+    nav ul li a:hover { color: var(--gold); }
+
+    /* Sections */
+    section { padding: 100px 20px; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+    #home { background: var(--gold); color: var(--white); }
+    #about { background: var(--blue); color: var(--white); }
+    #programs { background: var(--white); color: var(--black); }
+    #join { background: var(--gold); color: var(--white); }
+    #resources { background: var(--blue); color: var(--white); }
+    #contact { background: var(--white); color: var(--black); }
+
+    /* Buttons */
+    .btn {
+      background: var(--blue); color: var(--white); padding: 0.8rem 2rem; border: none; border-radius: 30px;
+      font-weight: 600; font-size: 1rem; cursor: pointer; transition: 0.3s;
+    }
+    .btn:hover { background: var(--gold); color: var(--blue); }
+
+    /* Forms */
+    form { display: flex; flex-direction: column; gap: 1rem; width: 100%; max-width: 400px; }
+    input, textarea { padding: 0.8rem; border-radius: 10px; border: 1px solid #ccc; font-size: 1rem; width: 100%; }
+    textarea { resize: none; }
+
+    /* Footer */
+    footer { background: var(--black); color: var(--white); padding: 2rem; text-align: center; }
+    footer span { color: var(--gold); font-weight: 600; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav ul { flex-direction: column; gap: 1rem; }
+      section { padding: 80px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">
+      <img src="ok.jpg" alt="Helpers Dynasty MedEd Logo">
+      <span>Helpers Dynasty MedEd</span>
+    </div>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#programs">Programs</a></li>
+      <li><a href="#join">Join Us</a></li>
+      <li><a href="#resources">Resources</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Home -->
+  <section id="home">
+    <h1>Welcome to Helpers Dynasty MedEd</h1>
+    <p>A community of learners, mentors, and medical leaders shaping a kinder future.</p>
+    <button class="btn" onclick="document.getElementById('join').scrollIntoView({ behavior: 'smooth' })">Join Our Study & Mentorship Network</button>
+  </section>
+
+  <!-- About Us -->
+  <section id="about">
+    <h2>About Us</h2>
+    <p><strong>Purpose & Mission:</strong><br>
+       To develop minds who extend kindness to their communities,<br>
+       care for people in strategic areas, and<br>
+       build friendship, fellowship, and mutual understanding among members.
+    </p>
+    <p><strong>Who We Are:</strong><br>
+       Helpers Dynasty MedEd is a student-led initiative dedicated to learning, mentorship, and personal growth in medicine.
+    </p>
+  </section>
+
+  <!-- Programs & Activities -->
+  <section id="programs">
+    <h2>Programs & Activities</h2>
+    <ul>
+      <li><strong>Study With Me (7–10 PM daily):</strong> Join our live virtual study sessions.</li>
+      <li><strong>Mentor–Mentee Pairing:</strong> Guidance for IUHS and other medical coursework.</li>
+      <li><strong>Books & Materials Sharing:</strong> Access and share key medical resources.</li>
+      <li><strong>Research Assistance:</strong> Available to close members ($150 refundable contribution).</li>
+      <li><strong>Sunday Hangouts:</strong> Relaxed discussions about life and medicine.</li>
+    </ul>
+  </section>
+
+  <!-- Join Us -->
+  <section id="join">
+    <h2>Join Us</h2>
+    <p>Be part of a growing medical community that values learning, kindness, and impact.</p>
+    <form>
+      <input type="text" placeholder="Name" required>
+      <input type="email" placeholder="Email" required>
+      <input type="text" placeholder="Country">
+      <input type="text" placeholder="Specialty Interest">
+      <button type="submit" class="btn">Become a Member</button>
+    </form>
+  </section>
+
+  <!-- Resources -->
+  <section id="resources">
+    <h2>Resources</h2>
+    <ul>
+      <li>Shared study guides, e-books, and research tips.</li>
+      <li>Links to medical education platforms and journals.</li>
+    </ul>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Have a question or want to collaborate? Reach out to us below:</p>
+    <form>
+      <input type="text" placeholder="Name" required>
+      <input type="email" placeholder="Email" required>
+      <textarea placeholder="Message" rows="5" required></textarea>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 Helpers Dynasty MedEd. All Rights Reserved.<br>
+    Founded & Led by <span>Lordsfavour Anukam, Founder & President</span>
+  </footer>
+
+</body>
+</html>

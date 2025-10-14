@@ -1,3 +1,1 @@
-# HD-MedED
-
-[Edit in StackBlitz next generation editor ⚡️](https://stackblitz.com/~/github.com/Mifavourite/HD-MedED)
+A volunteer or mentorship group supporting future healthcare leaders.

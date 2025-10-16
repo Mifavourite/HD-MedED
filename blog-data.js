@@ -1,5 +1,49 @@
 // ===== HELPERS DYNASTY MEDED BLOG DATA =====
-// Add new posts at the TOP of this array daily
+{
+    id: 7, // Always increment this number
+    title: "How to Fast Without Losing Focus: A Guide for Students and Professionals",
+    date: "2025-10-16", // Update to current date
+    category: "Health & Mind Discipline",
+    readTime: "4 min read",
+    tags: ["fasting", "focus", "health", "discipline"],
+    content: `
+        <p>Fasting can be one of the most powerful ways to build discipline, mental clarity, and even spiritual strength — but for students and professionals, it often comes with a challenge: <strong>how do you stay focused when your brain starts asking for glucose?</strong></p>
+
+        <p>Many people experience headaches or fatigue during fasting because their body hasn’t yet learned to switch from burning glucose to burning fat for energy. The good news? You can train your body to fast smoothly while keeping your mind sharp.</p>
+
+        <h3>1. Choose a Fasting Style That Fits Your Lifestyle</h3>
+        <p>Eating at <strong>10 AM and 4 PM</strong> is an excellent example of an <strong>18:6 intermittent fast</strong> — fasting for 18 hours and eating within a 6-hour window. This gives your body time to rest and repair, while still providing enough energy for focus and productivity.</p>
+
+        <h3>2. Prepare Before You Begin</h3>
+        <ul>
+            <li>Reduce sugar and processed carbs for 2–3 days before starting.</li>
+            <li>Eat balanced meals with protein, healthy fats, and vegetables.</li>
+            <li>Stay hydrated and include electrolytes (a pinch of salt in water works fine).</li>
+        </ul>
+
+        <h3>3. What to Eat During Your Eating Window</h3>
+        <p><strong>10 AM (First Meal)</strong>: Break your fast gently with eggs, avocado, oatmeal, or Greek yogurt. Avoid heavy sugar or processed food.</p>
+        <p><strong>4 PM (Second Meal)</strong>: Enjoy a hearty meal with protein (chicken, beans, or fish), vegetables, and healthy fats like olive oil or nuts.</p>
+
+        <h3>4. Avoiding the Headache Trap</h3>
+        <ul>
+            <li>Drink plenty of water throughout the fast.</li>
+            <li>If you feel lightheaded, sip water with a bit of salt or have a few nuts — it won’t break your fast but can stabilize you.</li>
+            <li>Don’t over-caffeinate — black coffee and herbal teas are fine in moderation.</li>
+        </ul>
+
+        <h3>5. The Mindset That Makes It Work</h3>
+        <p>Remember, fasting isn’t just about skipping meals — it’s about <strong>training your body and mind to obey your higher purpose</strong>. Whether for spiritual discipline, health, or mental sharpness, consistency matters more than intensity.</p>
+
+        <blockquote>
+            “Your body obeys what your mind believes. Train your mind, and the body will follow.”
+        </blockquote>
+
+        <p>Start small, stay consistent, and soon your fasting hours will become your most focused and peaceful time of the day.</p>
+    `
+},
+//
+
 
 const blogPosts = [
     {

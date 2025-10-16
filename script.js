@@ -169,3 +169,173 @@ function debounce(func, wait) {
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = { debounce };
 }
+// ===== BLOG FUNCTIONALITY =====
+let currentPosts = [];
+let visiblePosts = 6;
+let currentFilter = 'all';
+let currentSearch = '';
+
+function initializeBlog() {
+    loadBlogPosts();
+    setupBlogEventListeners();
+    updateBlogStats();
+}
+
+function loadBlogPosts(postsToShow = blogUtils.getSortedPosts().slice(0, visiblePosts)) {
+    const blogContainer = document.getElementById('blog-posts');
+    if (!blogContainer) return;
+
+    currentPosts = postsToShow;
+
+    if (currentPosts.length === 0) {
+        blogContainer.innerHTML = `
+            <div class="no-results">
+                <i class="fas fa-search"></i>
+                <h3>No articles found</h3>
+                <p>Try adjusting your search or filter criteria</p>
+            </div>
+        `;
+        return;
+    }
+
+    blogContainer.innerHTML = currentPosts.map(post => `
+        <article class="blog-post-card" data-category="${post.category}">
+            <div class="post-header">
+                <span class="post-category">${post.category}</span>
+                <h3 class="post-title">${post.title}</h3>
+                <div class="post-meta">
+                    <span class="post-date">
+                        <i class="far fa-calendar"></i>
+                        ${formatDate(post.date)}
+                    </span>
+                    <span class="post-read-time">
+                        <i class="far fa-clock"></i>
+                        ${post.readTime}
+                    </span>
+                </div>
+            </div>
+            <div class="post-content">
+                ${post.content}
+            </div>
+            <div class="post-tags">
+                ${post.tags.map(tag => `<span class="post-tag">#${tag}</span>`).join('')}
+            </div>
+        </article>
+    `).join('');
+}
+
+function setupBlogEventListeners() {
+    // Search functionality
+    const searchInput = document.getElementById('blog-search');
+    if (searchInput) {
+        searchInput.addEventListener('input', debounce((e) => {
+            currentSearch = e.target.value;
+            applyFilters();
+        }, 300));
+    }
+
+    // Filter buttons
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentFilter = btn.dataset.filter;
+            applyFilters();
+        });
+    });
+
+    // Load more button
+    const loadMoreBtn = document.getElementById('load-more');
+    if (loadMoreBtn) {
+        loadMoreBtn.addEventListener('click', loadMorePosts);
+    }
+}
+
+function applyFilters() {
+    let filteredPosts = blogUtils.getSortedPosts();
+
+    // Apply category filter
+    if (currentFilter !== 'all') {
+        filteredPosts = filteredPosts.filter(post => post.category === currentFilter);
+    }
+
+    // Apply search filter
+    if (currentSearch) {
+        filteredPosts = blogUtils.searchPosts(currentSearch);
+    }
+
+    loadBlogPosts(filteredPosts.slice(0, visiblePosts));
+    updateBlogStats();
+}
+
+function loadMorePosts() {
+    visiblePosts += 6;
+    applyFilters();
+    
+    // Hide load more button if all posts are visible
+    const totalPosts = currentFilter === 'all' ? 
+        blogUtils.getTotalPosts() : 
+        blogUtils.getPostsByCategory(currentFilter).length;
+    
+    if (visiblePosts >= totalPosts) {
+        document.getElementById('load-more').style.display = 'none';
+    }
+}
+
+function updateBlogStats() {
+    const statsElement = document.getElementById('blog-stats');
+    if (!statsElement) return;
+
+    const totalPosts = blogUtils.getTotalPosts();
+    const visibleCount = currentPosts.length;
+    const categories = blogUtils.getCategories();
+
+    statsElement.innerHTML = `
+        Showing ${visibleCount} of ${totalPosts} articles | 
+        ${Object.entries(categories).map(([cat, count]) => `${cat}: ${count}`).join(' | ')}
+    `;
+}
+
+function formatDate(dateString) {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return new Date(dateString).toLocaleDateString('en-US', options);
+}
+
+function scrollToSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+    }
+}
+
+// Update your existing DOMContentLoaded event
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Helpers Dynasty MedEd website loaded successfully! 🩺');
+    
+    // Your existing functionality
+    initializeMobileMenu();
+    initializeSmoothScrolling();
+    initializeForms();
+    initializeNavbarScroll();
+    initializeActiveNavLinks();
+    initializeAnimations();
+    
+    // NEW: Initialize blog
+    initializeBlog();
+});
+
+// Your existing functions (keep them, just add the blog ones above)
+function initializeMobileMenu() {
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+    }
+}
+
+// ... keep all your other existing functions

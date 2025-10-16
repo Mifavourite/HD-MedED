@@ -3,317 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <!-- ADD THIS GOOGLE VERIFICATION TAG -->
-<meta name="google-site-verification" content="un7iQHXgX10GNmO9ckf7jg5Px2UP0OxdGsH2PZjCKsw" />
+  <!-- Google Verification Tag -->
+  <meta name="google-site-verification" content="un7iQHXgX10GNmO9ckf7jg5Px2UP0OxdGsH2PZjCKsw" />
 
-  <!-- ===== SEO META TAGS ===== -->
+  <!-- SEO Meta Tags -->
   <meta name="description" content="Helpers Dynasty MedEd - A community of learners, mentors, and medical leaders shaping a kinder future. Join our medical education network.">
   <meta name="keywords" content="medical education, Helpers Dynasty, MedEd, medical students, mentorship, study sessions, medical resources">
   <meta name="robots" content="index, follow">
   <meta name="author" content="Helpers Dynasty MedEd">
-  </head>
-  
-  <!-- ===== OPEN GRAPH TAGS ===== -->
+
+  <!-- Open Graph Tags -->
   <meta property="og:title" content="Helpers Dynasty MedEd - Medical Education Community">
   <meta property="og:description" content="A community of learners, mentors, and medical leaders shaping a kinder future">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://mifavourite.github.io/HD-MedED/">
   <meta property="og:image" content="https://mifavourite.github.io/HD-MedED/ok.jpg">
-  
-  <!-- ===== TWITTER CARD ===== -->
+
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Helpers Dynasty MedEd">
   <meta name="twitter:description" content="Medical Education Community - Learners, mentors, and medical leaders">
-  
+
   <title>Helpers Dynasty MedEd - Medical Education Community</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  
   <style>
-    /* Reset & Base */
+    /* Your CSS styles here (keep all your existing styles) */
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
-    body { scroll-behavior: smooth; color: #000; }
-    a { text-decoration: none; color: inherit; }
-
-    /* Colors */
-    :root {
-      --gold: #FFD700;
-      --blue: #1E3A8A;
-      --white: #ffffff;
-      --red: #DC2626;
-      --black: #000000;
-    }
-
-    /* Navbar */
-    nav {
-      position: fixed; top: 0; width: 100%; background: var(--white); box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      z-index: 1000; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem;
-    }
-    nav .logo {
-      display: flex; 
-      align-items: center; 
-      gap: 10px;
-    }
-    nav .logo img { height: 50px; }
-    nav .logo span { font-weight: 700; color: var(--gold); font-size: 1.5rem; }
-    nav ul { list-style: none; display: flex; gap: 2rem; }
-    nav ul li a { font-weight: 600; color: var(--blue); transition: 0.3s; }
-    nav ul li a:hover { color: var(--gold); }
-
-    /* Sections */
-    section { padding: 100px 20px; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
-    #home { background: var(--gold); color: var(--white); }
-    #about { background: var(--blue); color: var(--white); }
-    #programs { background: var(--white); color: var(--black); }
-    #join { background: var(--gold); color: var(--white); }
-    #resources { background: var(--blue); color: var(--white); }
-    #contact { background: var(--white); color: var(--black); }
-
-    /* Buttons */
-    .btn {
-      background: var(--blue); color: var(--white); padding: 0.8rem 2rem; border: none; border-radius: 30px;
-      font-weight: 600; font-size: 1rem; cursor: pointer; transition: 0.3s;
-    }
-    .btn:hover { background: var(--gold); color: var(--blue); }
-
-    /* Forms */
-    form { display: flex; flex-direction: column; gap: 1rem; width: 100%; max-width: 400px; }
-    input, textarea { padding: 0.8rem; border-radius: 10px; border: 1px solid #ccc; font-size: 1rem; width: 100%; }
-    textarea { resize: none; }
-
-    /* Contact Info */
-    .contact-info {
-      margin-top: 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      align-items: center;
-    }
-    
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin: 0.5rem 0;
-    }
-    
-    .social-links {
-      display: flex;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-    
-    .social-link {
-      width: 40px;
-      height: 40px;
-      background: var(--blue);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--white);
-      transition: 0.3s;
-    }
-    
-    .social-link:hover {
-      background: var(--gold);
-      transform: translateY(-2px);
-    }
-
-    /* Footer */
-    footer { 
-      background: var(--black); 
-      color: var(--white); 
-      padding: 2rem; 
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    
-    .footer-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    
-    .footer-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 700;
-      color: var(--gold);
-    }
-    
-    .footer-social {
-      display: flex;
-      gap: 1rem;
-    }
-    
-    footer span { color: var(--gold); font-weight: 600; }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      nav ul { flex-direction: column; gap: 1rem; }
-      section { padding: 80px 10px; }
-      .footer-content { flex-direction: column; text-align: center; }
-    }
+    /* ... rest of your CSS ... */
   </style>
 </head>
-<body>
-
-  <!-- Navbar -->
-  <nav>
-    <div class="logo">
-      <img src="ok.jpg" alt="Helpers Dynasty MedEd Logo">
-      <span>Helpers Dynasty MedEd</span>
-    </div>
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About Us</a></li>
-      <li><a href="#programs">Programs</a></li>
-      <li><a href="#join">Join Us</a></li>
-      <li><a href="#resources">Resources</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-
-  <!-- Home -->
-  <section id="home">
-    <h1>Welcome to Helpers Dynasty MedEd</h1>
-    <p>A community of learners, mentors, and medical leaders shaping a kinder future.</p>
-    <button class="btn" onclick="document.getElementById('join').scrollIntoView({ behavior: 'smooth' })">Join Our Study & Mentorship Network</button>
-  </section>
-
-  <!-- About Us -->
-  <section id="about">
-    <h2>About Us</h2>
-    <p><strong>Purpose & Mission:</strong><br>
-       To develop minds who extend kindness to their communities,<br>
-       care for people in strategic areas, and<br>
-       build friendship, fellowship, and mutual understanding among members.
-    </p>
-    <p><strong>Who We Are:</strong><br>
-       Helpers Dynasty MedEd is a student-led initiative dedicated to learning, mentorship, and personal growth in medicine.
-    </p>
-  </section>
-
-  <!-- Programs & Activities -->
-  <section id="programs">
-    <h2>Programs & Activities</h2>
-    <ul>
-      <li><strong>Study With Me (7–10 PM daily):</strong> Join our live virtual study sessions.</li>
-      <li><strong>Mentor–Mentee Pairing:</strong> Guidance for IUHS and other medical coursework.</li>
-      <li><strong>Books & Materials Sharing:</strong> Access and share key medical resources.</li>
-      <li><strong>Research Assistance:</strong> Available to those that sincerely needs help. </li>
-      <li><strong>Sunday Hangouts:</strong> Relaxed discussions about life and medicine.</li>
-    </ul>
-  </section>
-
-  <!-- Join Us -->
-  <section id="join">
-    <h2>Join Us</h2>
-    <p>Be part of a growing medical community that values learning, kindness, and impact.</p>
-    <form>
-      <input type="text" placeholder="Name" required>
-      <input type="email" placeholder="Email" required>
-      <input type="text" placeholder="Country">
-      <input type="text" placeholder="Specialty Interest">
-      <button type="submit" class="btn">Become a Member</button>
-    </form>
-  </section>
-
-  <!-- Resources -->
-  <section id="resources">
-    <h2>Resources</h2>
-    <ul>
-      <li>Shared study guides, e-books, and research tips.</li>
-      <li>Links to medical education platforms and journals.</li>
-    </ul>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <p>Have a question or want to collaborate? Reach out to us below:</p>
-    <form>
-      <input type="text" placeholder="Name" required>
-      <input type="email" placeholder="Email" required>
-      <textarea placeholder="Message" rows="5" required></textarea>
-      <button type="submit" class="btn">Send Message</button>
-    </form>
-    
-    <div class="contact-info">
-      <div class="contact-item">
-        <strong>Email:</strong> dlifehealth@gmail.com
-      </div>
-      <div class="contact-item">
-        <strong>LinkedIn:</strong> Helpers Dynasty MedEd
-      </div>
-      <div class="contact-item">
-        <strong>YouTube:</strong> @lordsfavouranukamchinemerem
-      </div>
-      
-      <div class="social-links">
-        <a href="https://www.linkedin.com/company/helpers-dynasty-meded/about/?viewAsMember=true" class="social-link" target="_blank" title="LinkedIn">
-          <i class="fab fa-linkedin-in"></i>
-        </a>
-        <a href="https://www.youtube.com/@lordsfavouranukamchinemerem" class="social-link" target="_blank" title="YouTube">
-          <i class="fab fa-youtube"></i>
-        </a>
-        <a href="mailto:dlifehealth@gmail.com" class="social-link" title="Email">
-          <i class="fas fa-envelope"></i>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="footer-content">
-      <div class="footer-logo">
-        <img src="ok.jpg" alt="Helpers Dynasty MedEd Logo" height="30">
-        <span>Helpers Dynasty MedEd</span>
-      </div>
-      
-      <div class="footer-social">
-        <a href="https://www.linkedin.com/company/helpers-dynasty-meded/about/?viewAsMember=true" target="_blank" class="social-link">
-          <i class="fab fa-linkedin-in"></i>
-        </a>
-        <a href="https://www.youtube.com/@lordsfavouranukamchinemerem" target="_blank" class="social-link">
-          <i class="fab fa-youtube"></i>
-        </a>
-        <a href="mailto:dlifehealth@gmail.com" class="social-link">
-          <i class="fas fa-envelope"></i>
-        </a>
-      </div>
-    </div>
-    
-    <div>
-      © 2025 Helpers Dynasty MedEd. All Rights Reserved.
-    </div>
-  </footer>
-
-  <!-- Font Awesome for icons -->
-  <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
-  
-  <!-- Add this if you don't have Font Awesome kit -->
-  <script>
-    // Fallback for Font Awesome icons
-    if (!document.querySelector('.fa')) {
-      const faScript = document.createElement('script');
-      faScript.src = 'https://kit.fontawesome.com/a076d05399.js';
-      faScript.crossOrigin = 'anonymous';
-      document.head.appendChild(faScript);
-    }
-  </script>
-
-</body>
-</html>
-
-
-

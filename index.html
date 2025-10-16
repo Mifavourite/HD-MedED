@@ -8,14 +8,14 @@
   <meta name="google-site-verification" content="un7iQHXgX10GNmO9ckf7jg5Px2UP0OxdGsH2PZjCKsw" />
 
   <!-- SEO Meta Tags -->
-  <meta name="description" content="Helpers Dynasty MedEd - A community of learners, mentors, and medical leaders shaping a kinder future. Join our medical education network.">
-  <meta name="keywords" content="medical education, Helpers Dynasty, MedEd, medical students, mentorship, study sessions, medical resources">
+  <meta name="description" content="Helpers Dynasty MedEd - Medical student community with daily study sessions, mentorship, research assistance. Join our medical education network for IUHS students.">
+  <meta name="keywords" content="medical students, IUHS, medical education, Helpers Dynasty MedEd, study sessions, medical mentorship, research assistance, medical community, online medical education, medical blog">
   <meta name="robots" content="index, follow">
   <meta name="author" content="Helpers Dynasty MedEd">
 
   <!-- Open Graph Tags -->
   <meta property="og:title" content="Helpers Dynasty MedEd - Medical Education Community">
-  <meta property="og:description" content="A community of learners, mentors, and medical leaders shaping a kinder future">
+  <meta property="og:description" content="A community of learners, mentors, and medical leaders shaping a kinder future with daily medical blog posts and resources.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://mifavourite.github.io/HD-MedED/">
   <meta property="og:image" content="https://mifavourite.github.io/HD-MedED/ok.jpg">
@@ -23,9 +23,25 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Helpers Dynasty MedEd">
-  <meta name="twitter:description" content="Medical Education Community - Learners, mentors, and medical leaders">
+  <meta name="twitter:description" content="Medical Education Community - Daily blog posts, study sessions, and mentorship">
 
-  <title>Helpers Dynasty MedEd - Medical Education Community</title>
+  <!-- Schema Markup for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Helpers Dynasty MedEd",
+    "description": "Medical education community for students with daily blog posts and resources",
+    "url": "https://mifavourite.github.io/HD-MedED/",
+    "logo": "https://mifavourite.github.io/HD-MedED/ok.jpg",
+    "sameAs": [
+      "https://www.linkedin.com/company/helpers-dynasty-meded",
+      "https://www.youtube.com/@lordsfavouranukamchinemerem"
+    ]
+  }
+  </script>
+
+  <title>Helpers Dynasty MedEd - Medical Education Community & Daily Blog</title>
   
   <!-- External Stylesheets -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
@@ -44,6 +60,7 @@
       <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
       <li class="nav-item"><a href="#about" class="nav-link">About Us</a></li>
       <li class="nav-item"><a href="#programs" class="nav-link">Programs</a></li>
+      <li class="nav-item"><a href="#blog" class="nav-link">Medical Blog</a></li>
       <li class="nav-item"><a href="#join" class="nav-link">Join Us</a></li>
       <li class="nav-item"><a href="#resources" class="nav-link">Resources</a></li>
       <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
@@ -57,120 +74,183 @@
 
   <!-- Home Section -->
   <section id="home" class="hero">
-    <h1>Welcome to Helpers Dynasty MedEd</h1>
-    <p>A community of learners, mentors, and medical leaders shaping a kinder future.</p>
-    <button class="btn btn-primary">Join Our Study & Mentorship Network</button>
+    <div class="hero-content">
+      <h1>Welcome to Helpers Dynasty MedEd</h1>
+      <p>A community of learners, mentors, and medical leaders shaping a kinder future.</p>
+      <button class="btn btn-primary" onclick="scrollToSection('blog')">Read Daily Medical Blog</button>
+    </div>
   </section>
 
   <!-- About Us Section -->
   <section id="about" class="section">
-    <h2>About Us</h2>
-    <p><strong>Purpose & Mission:</strong><br>
-       To develop minds who extend kindness to their communities,<br>
-       care for people in strategic areas, and<br>
-       build friendship, fellowship, and mutual understanding among members.
-    </p>
-    <p><strong>Who We Are:</strong><br>
-       Helpers Dynasty MedEd is a student-led initiative dedicated to learning, mentorship, and personal growth in medicine.
-    </p>
+    <div class="container">
+      <h2>About Us</h2>
+      <p><strong>Purpose & Mission:</strong><br>
+         To develop minds who extend kindness to their communities,<br>
+         care for people in strategic areas, and<br>
+         build friendship, fellowship, and mutual understanding among members.
+      </p>
+      <p><strong>Who We Are:</strong><br>
+         Helpers Dynasty MedEd is a student-led initiative dedicated to learning, mentorship, and personal growth in medicine.
+      </p>
+    </div>
   </section>
 
   <!-- Programs Section -->
   <section id="programs" class="section">
-    <h2>Programs & Activities</h2>
-    <ul class="programs-list">
-      <li><strong>Study With Me (7–10 PM daily):</strong> Join our live virtual study sessions.</li>
-      <li><strong>Mentor–Mentee Pairing:</strong> Guidance for IUHS and other medical coursework.</li>
-      <li><strong>Books & Materials Sharing:</strong> Access and share key medical resources.</li>
-      <li><strong>Research Assistance:</strong> Available to those that sincerely needs help.</li>
-      <li><strong>Sunday Hangouts:</strong> Relaxed discussions about life and medicine.</li>
-    </ul>
+    <div class="container">
+      <h2>Programs & Activities</h2>
+      <ul class="programs-list">
+        <li><strong>Study With Me (7–10 PM daily):</strong> Join our live virtual study sessions.</li>
+        <li><strong>Mentor–Mentee Pairing:</strong> Guidance for IUHS and other medical coursework.</li>
+        <li><strong>Books & Materials Sharing:</strong> Access and share key medical resources.</li>
+        <li><strong>Research Assistance:</strong> Available to those that sincerely needs help.</li>
+        <li><strong>Sunday Hangouts:</strong> Relaxed discussions about life and medicine.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- BLOG SECTION -->
+  <section id="blog" class="section blog-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>📚 Daily Medical Blog</h2>
+        <p class="section-subtitle">Fresh medical insights, study tips, and clinical knowledge updated daily</p>
+      </div>
+
+      <!-- Blog Search and Filters -->
+      <div class="blog-controls">
+        <div class="search-box">
+          <input type="text" id="blog-search" placeholder="Search medical topics...">
+          <i class="fas fa-search"></i>
+        </div>
+        <div class="filter-buttons">
+          <button class="filter-btn active" data-filter="all">All Posts</button>
+          <button class="filter-btn" data-filter="Anatomy">Anatomy</button>
+          <button class="filter-btn" data-filter="Physiology">Physiology</button>
+          <button class="filter-btn" data-filter="Pharmacology">Pharmacology</button>
+          <button class="filter-btn" data-filter="Study Tips">Study Tips</button>
+          <button class="filter-btn" data-filter="Clinical">Clinical</button>
+        </div>
+      </div>
+
+      <!-- Blog Posts Container -->
+      <div id="blog-posts" class="blog-posts-container">
+        <!-- Posts loaded by JavaScript -->
+      </div>
+
+      <!-- Load More Button -->
+      <div class="load-more-container">
+        <button id="load-more" class="btn btn-secondary">Load More Articles</button>
+        <div id="blog-stats" class="blog-stats"></div>
+      </div>
+    </div>
   </section>
 
   <!-- Join Us Section -->
   <section id="join" class="section">
-    <h2>Join Us</h2>
-    <p>Be part of a growing medical community that values learning, kindness, and impact.</p>
-    <form class="join-form">
-      <input type="text" placeholder="Name" required>
-      <input type="email" placeholder="Email" required>
-      <input type="text" placeholder="Country">
-      <input type="text" placeholder="Specialty Interest">
-      <button type="submit" class="btn btn-primary">Become a Member</button>
-    </form>
+    <div class="container">
+      <h2>Join Us</h2>
+      <p>Be part of a growing medical community that values learning, kindness, and impact.</p>
+      <form class="join-form">
+        <input type="text" placeholder="Name" required>
+        <input type="email" placeholder="Email" required>
+        <input type="text" placeholder="Country">
+        <input type="text" placeholder="Specialty Interest">
+        <button type="submit" class="btn btn-primary">Become a Member</button>
+      </form>
+    </div>
   </section>
 
   <!-- Resources Section -->
   <section id="resources" class="section">
-    <h2>Resources</h2>
-    <ul class="resources-list">
-      <li>Shared study guides, e-books, and research tips.</li>
-      <li>Links to medical education platforms and journals.</li>
-    </ul>
+    <div class="container">
+      <h2>Resources</h2>
+      <ul class="resources-list">
+        <li>Shared study guides, e-books, and research tips.</li>
+        <li>Links to medical education platforms and journals.</li>
+        <li>Daily updated medical blog with latest insights.</li>
+      </ul>
+    </div>
   </section>
 
   <!-- Contact Section -->
   <section id="contact" class="section">
-    <h2>Contact Us</h2>
-    <p>Have a question or want to collaborate? Reach out to us below:</p>
-    <form class="contact-form">
-      <input type="text" placeholder="Name" required>
-      <input type="email" placeholder="Email" required>
-      <textarea placeholder="Message" rows="5" required></textarea>
-      <button type="submit" class="btn btn-primary">Send Message</button>
-    </form>
-    
-    <div class="contact-info">
-      <div class="contact-item">
-        <strong>Email:</strong> dlifehealth@gmail.com
-      </div>
-      <div class="contact-item">
-        <strong>LinkedIn:</strong> Helpers Dynasty MedEd
-      </div>
-      <div class="contact-item">
-        <strong>YouTube:</strong> @lordsfavouranukamchinemerem
-      </div>
+    <div class="container">
+      <h2>Contact Us</h2>
+      <p>Have a question or want to collaborate? Reach out to us below:</p>
+      <form class="contact-form">
+        <input type="text" placeholder="Name" required>
+        <input type="email" placeholder="Email" required>
+        <textarea placeholder="Message" rows="5" required></textarea>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </form>
       
-      <div class="social-links">
-        <a href="https://www.linkedin.com/company/helpers-dynasty-meded/about/?viewAsMember=true" class="social-link" target="_blank" title="LinkedIn">
-          <i class="fab fa-linkedin-in"></i>
-        </a>
-        <a href="https://www.youtube.com/@lordsfavouranukamchinemerem" class="social-link" target="_blank" title="YouTube">
-          <i class="fab fa-youtube"></i>
-        </a>
-        <a href="mailto:dlifehealth@gmail.com" class="social-link" title="Email">
+      <div class="contact-info">
+        <div class="contact-item">
           <i class="fas fa-envelope"></i>
-        </a>
+          <strong>Email:</strong> dlifehealth@gmail.com
+        </div>
+        <div class="contact-item">
+          <i class="fab fa-linkedin"></i>
+          <strong>LinkedIn:</strong> Helpers Dynasty MedEd
+        </div>
+        <div class="contact-item">
+          <i class="fab fa-youtube"></i>
+          <strong>YouTube:</strong> @lordsfavouranukamchinemerem
+        </div>
+        
+        <div class="social-links">
+          <a href="https://www.linkedin.com/company/helpers-dynasty-meded/about/?viewAsMember=true" class="social-link" target="_blank" title="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://www.youtube.com/@lordsfavouranukamchinemerem" class="social-link" target="_blank" title="YouTube">
+            <i class="fab fa-youtube"></i>
+          </a>
+          <a href="mailto:dlifehealth@gmail.com" class="social-link" title="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <div class="footer-content">
-      <div class="footer-logo">
-        <span>Helpers Dynasty MedEd</span>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <span>Helpers Dynasty MedEd</span>
+          <p>Medical Education Community & Daily Blog</p>
+        </div>
+        
+        <div class="footer-links">
+          <a href="#blog">Medical Blog</a>
+          <a href="#programs">Study Sessions</a>
+          <a href="#join">Join Community</a>
+        </div>
+        
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/company/helpers-dynasty-meded/about/?viewAsMember=true" target="_blank" class="social-link">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://www.youtube.com/@lordsfavouranukamchinemerem" target="_blank" class="social-link">
+            <i class="fab fa-youtube"></i>
+          </a>
+          <a href="mailto:dlifehealth@gmail.com" class="social-link">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
       </div>
       
-      <div class="footer-social">
-        <a href="https://www.linkedin.com/company/helpers-dynasty-meded/about/?viewAsMember=true" target="_blank" class="social-link">
-          <i class="fab fa-linkedin-in"></i>
-        </a>
-        <a href="https://www.youtube.com/@lordsfavouranukamchinemerem" target="_blank" class="social-link">
-          <i class="fab fa-youtube"></i>
-        </a>
-        <a href="mailto:dlifehealth@gmail.com" class="social-link">
-          <i class="fas fa-envelope"></i>
-        </a>
+      <div class="footer-bottom">
+        <p>© 2024 Helpers Dynasty MedEd. All Rights Reserved. | Daily Medical Insights</p>
       </div>
-    </div>
-    
-    <div class="footer-bottom">
-      © 2025 Helpers Dynasty MedEd. All Rights Reserved.
     </div>
   </footer>
 
-  <!-- External JavaScript -->
+  <!-- External JavaScript Files -->
+  <script src="blog-data.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

@@ -1,26 +1,20 @@
+<!-- index.html - Helpers Dynasty (Full single-file rewrite). Place ok.jpg in the same repo root. Replace CNAME if needed. -->
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Google Verification Tag -->
-  <meta name="google-site-verification" content="un7iQHXgX10GNmO9ckf7jg5Px2UP0OxdGsH2PZjCKsw" />
-
-  <!-- SEO Meta -->
-  <meta name="description" content="Helpers Dynasty (HD) – Global healthcare volunteer and education community. Unity in Service, Growth through Fellowship in Love. Join us for mentorship, healthcare outreach, faith-based fellowship, and leadership development.">
-  <meta name="keywords" content="Helpers Dynasty, HD, healthcare volunteerism, medical mentorship, community service, faith-based fellowship, HD Hope, healthcare education, mentorship programs, study sessions, youth mentorship, healthcare leadership, compassionate healthcare, volunteer programs, elderly care, health outreach, medical education">
-
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <title>Helpers Dynasty (HD) — Unity in Service · Healthcare Mentorship & Outreach</title>
+  <meta name="description" content="Helpers Dynasty (HD) — a global healthcare volunteer & education community. Mentorship, outreach, study groups and project-based teams across Nigeria and internationally.">
   <meta name="author" content="Helpers Dynasty">
-  <meta name="copyright" content="Helpers Dynasty">
-  <meta name="language" content="English">
-  <meta name="coverage" content="Worldwide">
-  <meta name="distribution" content="Global">
-  <meta name="rating" content="General">
-  <meta name="revisit-after" content="7 days">
 
-  <!-- Open Graph Tags -->
-  <meta property="og:title" content="Helpers Dynasty (HD) – Global Healthcare Volunteer & Education Community">
-  <meta property="og:description" content="Unity in Service, Growth through Fellowship in Love. HD fosters healthcare education, mentorship, community service, and faith-based fellowship across all age groups.">
+  <!-- Verification -->
+  <meta name="google-site-verification" content="un7iQHXgX10GNmO9ckf7jg5Px2UP0OxdGsH2PZjCKsw">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Helpers Dynasty (HD) — Unity in Service">
+  <meta property="og:description" content="Join HD for mentorship, healthcare outreach, bi-monthly learning and community projects.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://helpersdynasty.com/">
   <meta property="og:image" content="https://helpersdynasty.com/ok.jpg">
@@ -29,75 +23,302 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Helpers Dynasty (HD) – Global Healthcare Volunteer & Education Community">
-  <meta name="twitter:description" content="Join HD for mentorship, healthcare outreach, faith-based fellowship, study sessions, and leadership development. Unity in Service, Growth through Fellowship in Love.">
+  <meta name="twitter:title" content="Helpers Dynasty (HD) — Unity in Service">
+  <meta name="twitter:description" content="Healthcare mentorship, outreach, study groups and community projects.">
   <meta name="twitter:image" content="https://helpersdynasty.com/ok.jpg">
 
-  <!-- Canonical URL -->
+  <!-- Canonical -->
   <link rel="canonical" href="https://helpersdynasty.com/">
 
-  <!-- Schema Markup: Educational Organization -->
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/ok.jpg">
+
+  <!-- Minimal, modern CSS embedded for single-file deployment -->
+  <style>
+    :root{--primary:#2c5282;--accent:#ed8936;--bg:#f7fafc;--white:#fff;--text:#2d3748;--muted:#718096}
+    *{box-sizing:border-box}body{font-family:Montserrat,system-ui,-apple-system,"Segoe UI",Roboto,Arial;line-height:1.6;margin:0;color:var(--text);background:var(--bg)}
+    header{position:sticky;top:0;background:var(--white);box-shadow:0 2px 10px rgba(0,0,0,.06);z-index:40}
+    .container{max-width:1100px;margin:0 auto;padding:0 20px}
+    nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--primary)}
+    .brand img{width:44px;height:44px;border-radius:8px;object-fit:cover}
+    .nav-links{display:flex;gap:18px}
+    a{color:inherit;text-decoration:none}
+    .btn{display:inline-block;padding:10px 18px;border-radius:30px;font-weight:600}
+    .btn-primary{background:var(--primary);color:#fff}
+    .hero{padding:70px 0;display:flex;align-items:center}
+    .hero-grid{display:grid;grid-template-columns:1fr 420px;gap:32px;align-items:center}
+    h1{font-size:2.2rem;margin:0 0 12px;color:var(--primary)}
+    p.lead{margin:0 0 18px;color:var(--muted)}
+    .card{background:var(--white);padding:18px;border-radius:12px;box-shadow:0 6px 24px rgba(15,23,42,.06)}
+
+    /* Sections */
+    section{padding:56px 0}
+    .section-title{font-size:1.6rem;color:var(--primary);margin-bottom:10px}
+    .small{color:var(--muted);font-size:.95rem}
+
+    /* Vision grid */
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+    .list{list-style:none;padding:0;margin:0}
+    .list li{background:var(--white);padding:14px;border-radius:10px}
+
+    /* Blog */
+    .blog-post{background:var(--white);padding:20px;border-radius:12px}
+    .meta{font-size:.92rem;color:var(--muted);margin-bottom:8px}
+    .roles{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:12px}
+    .role{background:#fff;padding:12px;border-radius:8px}
+
+    footer{padding:28px 0;background:#0f1724;color:#d1d5db}
+    .footer-grid{display:grid;grid-template-columns:1fr 320px;gap:20px}
+
+    @media(max-width:880px){.hero-grid{grid-template-columns:1fr}.nav-links{display:none}}
+  </style>
+
+  <!-- JSON-LD: Organization + BlogPosting (single post) -->
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": "EducationalOrganization",
-    "name": "Helpers Dynasty (HD)",
-    "description": "Global network of communities dedicated to healthcare volunteerism, mentorship, education, faith-based fellowship, and service. Unity in Service, Growth through Fellowship in Love.",
-    "url": "https://helpersdynasty.com/",
-    "logo": "https://helpersdynasty.com/ok.jpg",
-    "founder": {
-      "@type": "Person",
-      "name": "Lordsfavour Anukam"
-    },
-    "foundingDate": "2017-02-24",
-    "sameAs": [
-      "https://www.linkedin.com/company/helpers-dynasty-meded",
-      "https://www.youtube.com/@lordsfavouranukamchinemerem"
-    ],
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "email": "dlifehealth@gmail.com",
-      "contactType": "Educational support"
-    },
-    "areaServed": "Worldwide",
-    "educationalLevel": "Youth to Healthcare Professionals",
-    "memberOf": [
-      "HD Management",
-      "HD International",
-      "HD Nigeria",
-      "HD Hope",
-      "HD Sponsors (future vision)"
-    ]
+    "@context":"https://schema.org",
+    "@type":"EducationalOrganization",
+    "name":"Helpers Dynasty (HD)",
+    "url":"https://helpersdynasty.com/",
+    "logo":"https://helpersdynasty.com/ok.jpg",
+    "founder":{"@type":"Person","name":"Lordsfavour Anukam"},
+    "foundingDate":"2017-02-24",
+    "sameAs":["https://www.linkedin.com/company/helpers-dynasty-meded","https://www.youtube.com/@lordsfavouranukamchinemerem"],
+    "contactPoint":{"@type":"ContactPoint","email":"dlifehealth@gmail.com","contactType":"Educational support"},
+    "areaServed":"Worldwide"
   }
   </script>
-
-  <!-- Schema Markup: Blog / Programs -->
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": "Blog",
-    "name": "Helpers Dynasty Blog & Programs",
-    "description": "Daily updates, mentorship programs, community service initiatives, study sessions, health outreach, and youth programs by Helpers Dynasty (HD).",
-    "url": "https://helpersdynasty.com/#blog",
-    "publisher": {
-      "@type": "Organization",
-      "name": "Helpers Dynasty (HD)",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://helpersdynasty.com/ok.jpg"
-      }
-    },
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": "https://helpersdynasty.com/#blog"
-    }
+    "@context":"https://schema.org",
+    "@type":"BlogPosting",
+    "headline":"Bi-Monthly Unifier — Scenario 001: Early CKD & a Team Response",
+    "description":"A practical, role-by-role walkthrough of how the health ecosystem responds to early chronic kidney disease.",
+    "image":"https://helpersdynasty.com/ok.jpg",
+    "author":{"@type":"Person","name":"Helpers Dynasty"},
+    "publisher":{"@type":"Organization","name":"Helpers Dynasty","logo":{"@type":"ImageObject","url":"https://helpersdynasty.com/ok.jpg"}},
+    "datePublished":"2025-11-26",
+    "mainEntityOfPage":{"@type":"WebPage","@id":"https://helpersdynasty.com/#blog"}
   }
   </script>
-
-  <title>Helpers Dynasty (HD) – Global Healthcare Volunteer & Education Community | Mentorship, Outreach & Faith-Based Fellowship</title>
-
-  <!-- External Stylesheets -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link rel="stylesheet" href="styles.css">
 </head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a class="brand" href="/">
+          <img src="/ok.jpg" alt="Helpers Dynasty logo">
+          <span>Helpers Dynasty (HD)</span>
+        </a>
+        <div class="nav-links">
+          <a href="#vision">Vision</a>
+          <a href="#programs">Programs</a>
+          <a href="#blog">Bi‑Monthly Unifier</a>
+          <a href="#join" class="btn btn-primary">Join</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <h1>Unity in Service — Growth through Fellowship in Love</h1>
+          <p class="lead">Helpers Dynasty is a global community of healthcare students and professionals committed to mentorship, outreach, research and compassionate service. We run local projects, study sessions and bi-monthly learning that connect roles across the health ecosystem.</p>
+
+          <div style="display:flex;gap:10px;margin-top:14px">
+            <a class="btn btn-primary" href="#join">Get Involved</a>
+            <a class="btn" href="#blog">Read the Bi‑Monthly Unifier</a>
+          </div>
+        </div>
+
+        <aside class="card">
+          <h3 style="margin:0 0 8px">Quick Facts</h3>
+          <p class="small" style="margin:0 0 12px">Founded 2017 • Mentorship • Outreach • Study groups • Projects</p>
+          <ul class="list small">
+            <li><strong>Nigeria:</strong> Monthly hangouts; alternate-month project planning</li>
+            <li><strong>International:</strong> Monthly hangouts; alternate-month research & management meetings</li>
+            <li><strong>HD Hope:</strong> Focused group meetings (monthly)</li>
+            <li><strong>Study:</strong> Group study at least 3× per week</li>
+            <li><strong>Blog:</strong> "Bi‑Monthly Unifier" — flagship case-based posts</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section id="vision" class="container">
+      <div class="section-title">Vision & Team Rhythm</div>
+      <p class="small">Helpers Dynasty organizes regular local and international rhythms that balance learning with action. Below is our practical schedule and how teams operate.</p>
+
+      <div class="grid" style="margin-top:14px">
+        <div class="card">
+          <h4 style="margin-top:0">Nigeria — Community & Projects</h4>
+          <p class="small">Nigeria members meet once a month for a relaxed hangout and discussion on a timely healthcare topic. The next month, the Nigeria team meets to plan and prepare a local healthcare project — for example a hospital visit, screening session, or an education outreach.</p>
+        </div>
+
+        <div class="card">
+          <h4 style="margin-top:0">International — Learning & Research</h4>
+          <p class="small">International members meet once a month for a hangout and a focused healthcare discussion. The following month the international team meets to plan a research project or to handle governance and management topics for the group.</p>
+        </div>
+
+        <div class="card">
+          <h4 style="margin-top:0">HD Hope</h4>
+          <p class="small">HD Hope hosts regular meetings to coordinate support, fundraising, and care-focused initiatives for vulnerable groups.</p>
+        </div>
+
+        <div class="card">
+          <h4 style="margin-top:0">Study & Fellowship</h4>
+          <p class="small">To promote discipline and peer learning, members are encouraged to join group study at least three times per week — these sessions double as mentorship and community-building spaces.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="programs" class="container">
+      <div class="section-title">Programs & How We Work</div>
+      <p class="small">Helpers Dynasty runs mentorship, outreach, study-series and project teams. We emphasize role-based collaboration — clinicians, nurses, lab scientists, allied health, public health, managers, caregivers and developers all contribute.</p>
+
+      <ul class="list" style="margin-top:12px">
+        <li class="card"><strong>Mentorship:</strong> One-to-one and group mentorship for students and early-career staff.</li>
+        <li class="card"><strong>Outreach:</strong> Community screenings, hospital visits, and public health education.</li>
+        <li class="card"><strong>Research & Projects:</strong> Small team projects, research collaborations and quality improvement initiatives.</li>
+        <li class="card"><strong>HD Hope:</strong> Faith-informed welfare programs for elders and children.</li>
+      </ul>
+    </section>
+
+    <section id="blog" class="container">
+      <div class="section-title">Bi‑Monthly Unifier — First Post</div>
+      <p class="small">A practical scenario that brings roles together. This post is the first issue of the Bi‑Monthly Unifier and will be the only blog post visible here (older posts have been archived).</p>
+
+      <article class="blog-post" aria-labelledby="post-title">
+        <h2 id="post-title">Bi‑Monthly Unifying Scenario — Early CKD: A Team Response</h2>
+        <div class="meta">Published: November 26, 2025 • Read: ~4 minutes</div>
+
+        <p>Mr. Ade is a 52-year-old man who visits a clinic with fatigue, swollen ankles and reduced urine output. He has long-standing, uncontrolled hypertension and has not been for routine checkups in years. His blood pressure today is 168/102 mmHg and he admits he often forgets medications and lacks a structured support system. The working concern is early chronic kidney disease (CKD).</p>
+
+        <p class="small"><strong>Why this matters:</strong> Early CKD is often silent until complications appear. A coordinated, practical response across the health team can slow progression and protect quality of life.</p>
+
+        <div class="roles">
+          <div class="role">
+            <strong>Clinician / Doctor</strong>
+            <p>I would order kidney function tests (serum creatinine, eGFR, basic metabolic panel, urinalysis), screen for complications, review and adjust antihypertensive therapy, and set an individualized follow-up plan. Clear, simple education about what CKD means and next steps is essential.</p>
+          </div>
+
+          <div class="role">
+            <strong>Nurse</strong>
+            <p>Measure vitals, review medication-taking habits, teach home blood pressure monitoring, counsel on low-salt meals, and ensure the patient understands follow-up appointments.</p>
+          </div>
+
+          <div class="role">
+            <strong>Medical Student</strong>
+            <p>Take a thorough history, perform a supervised physical exam, learn to interpret basic labs, and present the case concisely to the supervising clinician while reflecting on how systems can support adherence.</p>
+          </div>
+
+          <div class="role">
+            <strong>Medical Laboratory Scientist</strong>
+            <p>Run and validate creatinine, urea, electrolytes and urinalysis. Flag abnormal results promptly and help clinicians understand trends that affect medication dosing.</p>
+          </div>
+
+          <div class="role">
+            <strong>Allied Health (Dietitian, Pharmacist, Physiotherapist)</strong>
+            <p>Dietitian: design a low-sodium, kidney-friendly meal plan and offer realistic tips for grocery shopping and meal prep. Pharmacist: reconcile meds, check dosing for reduced kidney function and counsel on side effects. Physiotherapist: propose safe activity to support cardiovascular health.</p>
+          </div>
+
+          <div class="role">
+            <strong>Public Health Professional</strong>
+            <p>Link the individual case to community-level hypertension control gaps, help design screening events, and coordinate awareness campaigns that encourage routine checks.</p>
+          </div>
+
+          <div class="role">
+            <strong>Health Manager / Administrator</strong>
+            <p>Ensure clinic access to functioning blood pressure devices, lab reagents, referral pathways, follow-up reminders, and staff time for chronic care management.</p>
+          </div>
+
+          <div class="role">
+            <strong>Caregiver</strong>
+            <p>Help the patient remember medications, support dietary changes, encourage attendance to appointments and provide emotional support on the road to better control.</p>
+          </div>
+
+          <div class="role">
+            <strong>Health Software Developer</strong>
+            <p>Build simple tools that flag declining eGFR, send safe medication reminders, log home BP readings and alert clinicians to trends needing attention.</p>
+          </div>
+        </div>
+
+        <p style="margin-top:12px"><strong>Unified message:</strong> Every role matters. When clinicians, allied professionals, public health, managers, caregivers and developers coordinate, outcomes improve. Helpers Dynasty brings these roles together — for learning, for action, and for life.</p>
+
+      </article>
+    </section>
+
+    <section id="join" class="container">
+      <div class="section-title">Join Helpers Dynasty</div>
+      <p class="small">Whether you are a student, clinician, allied professional or community member — we welcome your time and skills. Share your interest below and a team member will reach out.</p>
+
+      <form class="card" style="display:grid;gap:10px;max-width:620px">
+        <input name="name" placeholder="Full name" required>
+        <input name="email" placeholder="Email address" required>
+        <select name="interest"><option>Mentorship</option><option>Outreach</option><option>Research</option><option>HD Hope</option><option>Study Group</option></select>
+        <textarea name="message" placeholder="How would you like to help?" rows="4"></textarea>
+        <div style="display:flex;gap:10px"><button type="submit" class="btn btn-primary">Send</button><button type="reset" class="btn">Reset</button></div>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <h3 style="margin-top:0;color:#fff">Helpers Dynasty (HD)</h3>
+        <p class="small">Global healthcare volunteer and education community. Unity in service. Growth through fellowship in love.</p>
+        <p class="small">Contact: dlifehealth@gmail.com</p>
+      </div>
+
+      <div>
+        <h4 style="margin:0 0 8px;color:#fff">Quick Links</h4>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <a href="#vision">Vision</a>
+          <a href="#programs">Programs</a>
+          <a href="#blog">Bi‑Monthly Unifier</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container" style="margin-top:18px;text-align:center;color:#9ca3af;font-size:.9rem">© Helpers Dynasty — All rights reserved</div>
+  </footer>
+
+  <!-- Minimal JS: form handling + smooth scroll + basic site behavior. Keep repository-friendly. -->
+  <script>
+    document.addEventListener('submit', function(e){
+      if(e.target && e.target.tagName.toLowerCase()==='form'){
+        e.preventDefault();
+        alert('Thank you! We received your interest. A team member will contact you.');
+        e.target.reset();
+      }
+    });
+
+    // smooth scroll for local links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',function(e){e.preventDefault();const id=this.getAttribute('href').slice(1);const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth',block:'start'})}));
+  </script>
+</body>
+</html>
+
+
+<!-- robots.txt (recommended) -->
+
+User-agent: *
+Allow: /
+Sitemap: https://helpersdynasty.com/sitemap.xml
+
+
+<!-- sitemap.xml (place at repo root as sitemap.xml) -->
+
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemap.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://helpersdynasty.com/</loc>
+    <lastmod>2025-11-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>

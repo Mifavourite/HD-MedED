@@ -1,22 +1,21 @@
-/* script.js — interactive features for Helpers Dynasty site */
+// Helpers Dynasty interactive script (no crescent moon icon; "Theme" text button used)
 
-/* Utilities */
-const qs = sel => document.querySelector(sel);
-const qsa = sel => Array.from(document.querySelectorAll(sel));
+/* helpers */
+const qs = s => document.querySelector(s);
+const qsa = s => Array.from(document.querySelectorAll(s));
 
-/* Theme: persisted */
+/* Theme switcher (text button 'Theme') — persists to localStorage */
 (function initTheme(){
   const toggle = qs('#themeToggle');
-  const stored = localStorage.getItem('hd-theme');
-  if(stored === 'dark') document.documentElement.classList.add('dark');
+  const saved = localStorage.getItem('hd-theme');
+  if(saved === 'dark') document.documentElement.classList.add('dark');
+  // set initial label (no icon)
+  if(toggle) toggle.textContent = document.documentElement.classList.contains('dark') ? 'Theme: Dark' : 'Theme: Light';
   toggle && toggle.addEventListener('click', () => {
-    document.documentElement.classList.toggle('dark');
-    const isDark = document.documentElement.classList.contains('dark');
+    const isDark = document.documentElement.classList.toggle('dark');
     localStorage.setItem('hd-theme', isDark ? 'dark' : 'light');
-    toggle.textContent = isDark ? '☀️' : '🌙';
+    toggle.textContent = isDark ? 'Theme: Dark' : 'Theme: Light';
   });
-  // set initial icon
-  if(toggle) toggle.textContent = document.documentElement.classList.contains('dark') ? '☀️' : '🌙';
 })();
 
 /* Mobile menu */
@@ -31,12 +30,12 @@ const qsa = sel => Array.from(document.querySelectorAll(sel));
   });
 })();
 
-/* Smooth scroll for anchors */
+/* Smooth internal links */
 (function initSmoothScroll(){
   qsa('a[href^="#"]').forEach(a => {
     a.addEventListener('click', (e) => {
       const href = a.getAttribute('href');
-      if(href === "#" || href === "") return;
+      if(!href || href === '#') return;
       e.preventDefault();
       const el = document.querySelector(href);
       if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
@@ -44,14 +43,14 @@ const qsa = sel => Array.from(document.querySelectorAll(sel));
   });
 })();
 
-/* Fade-in intersection observer */
+/* Fade-in sections via IntersectionObserver */
 (function initFadeIn(){
-  const io = new IntersectionObserver(entries => {
+  const obs = new IntersectionObserver((entries) => {
     entries.forEach(en => {
       if(en.isIntersecting) en.target.classList.add('visible');
     });
   }, {threshold: 0.12});
-  qsa('.fade').forEach(el => io.observe(el));
+  qsa('.fade').forEach(node => obs.observe(node));
 })();
 
 /* Back to top */
@@ -80,12 +79,10 @@ const qsa = sel => Array.from(document.querySelectorAll(sel));
   };
   prev && prev.addEventListener('click', () => { idx = (idx - 1 + items.length) % items.length; show(idx); });
   next && next.addEventListener('click', () => { idx = (idx + 1) % items.length; show(idx); });
-
-  // Auto-play
-  setInterval(() => { idx = (idx + 1) % items.length; show(idx); }, 4000);
+  setInterval(() => { idx = (idx + 1) % items.length; show(idx); }, 4500);
 })();
 
-/* Counters */
+/* Counters — animate when visible */
 (function initCounters(){
   const counters = qsa('.counter');
   counters.forEach(el => {
@@ -98,7 +95,6 @@ const qsa = sel => Array.from(document.querySelectorAll(sel));
       el.textContent = String(cur);
       requestAnimationFrame(run);
     };
-    // start when visible
     const io = new IntersectionObserver(entries => {
       if(entries[0].isIntersecting) { run(); io.disconnect(); }
     }, {threshold:0.2});
@@ -106,7 +102,7 @@ const qsa = sel => Array.from(document.querySelectorAll(sel));
   });
 })();
 
-/* Join form validation + demo submission */
+/* Join form handling (demo: stores in localStorage) */
 (function initJoinForm(){
   const form = qs('#joinForm');
   if(!form) return;
@@ -114,11 +110,7 @@ const qsa = sel => Array.from(document.querySelectorAll(sel));
     e.preventDefault();
     const name = qs('#joinName').value.trim();
     const email = qs('#joinEmail').value.trim();
-    if(!name || !email) {
-      alert('Please provide your name and valid email.');
-      return;
-    }
-    // demo: store in localStorage (simulate)
+    if(!name || !email) return alert('Please enter your name and a valid email.');
     const list = JSON.parse(localStorage.getItem('hd-join') || '[]');
     list.push({name,email,interest:qs('#joinInterest').value,ts:Date.now()});
     localStorage.setItem('hd-join', JSON.stringify(list));
@@ -130,21 +122,19 @@ const qsa = sel => Array.from(document.querySelectorAll(sel));
 /* Login modal (demo) */
 (function initLoginModal(){
   const modal = qs('#loginModal');
-  const openBtn = qs('a[href="login.html"]') || qs('a.btn-login');
+  const openLink = qs('a[href="login.html"]');
   const close = qs('.modal-close');
   const cancel = qs('#modalCancel');
 
-  // If user clicked "Member Login" link in header, open modal (to keep user on site)
-  openBtn && openBtn.addEventListener('click', (e) => {
-    // If link is to login.html, prevent and open modal demo
-    if(openBtn.getAttribute('href') === 'login.html') {
+  openLink && openLink.addEventListener('click', (e) => {
+    if(openLink.getAttribute('href') === 'login.html') {
       e.preventDefault();
-      modal && modal.setAttribute('aria-hidden', 'false');
+      modal && modal.setAttribute('aria-hidden','false');
     }
   });
 
-  close && close.addEventListener('click', () => modal.setAttribute('aria-hidden', 'true'));
-  cancel && cancel.addEventListener('click', () => modal.setAttribute('aria-hidden', 'true'));
+  close && close.addEventListener('click', () => modal.setAttribute('aria-hidden','true'));
+  cancel && cancel.addEventListener('click', () => modal.setAttribute('aria-hidden','true'));
 
   const form = qs('#loginForm');
   if(form) form.addEventListener('submit', (e) => {
@@ -152,16 +142,11 @@ const qsa = sel => Array.from(document.querySelectorAll(sel));
     const u = qs('#username').value.trim();
     const p = qs('#password').value.trim();
     if(!u || !p) return alert('Please enter both username and password.');
-    // demo-login: accept any credentials and simulate member dashboard
     localStorage.setItem('hd-user', JSON.stringify({user:u,ts:Date.now()}));
-    alert('Demo login successful. (This is a static demo; integrate real auth for production.)');
+    alert('Demo login successful. (Static demo only.)');
     modal.setAttribute('aria-hidden','true');
   });
 })();
 
-/* Small helpers */
-(function initMetaYear(){
-  const y = new Date().getFullYear();
-  const el = qs('#thisYear');
-  if(el) el.textContent = y;
-})();
+/* Set footer year */
+(function setYear(){ const el = qs('#thisYear'); if(el) el.textContent = new Date().getFullYear(); })();

@@ -1,60 +1,48 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #f8f9fa;
-    color: #333;
+background: #f9f9f9;
+color: #333;
 }
-
 header {
-    text-align: center;
-    padding: 20px;
-    background: white;
-    border-bottom: 3px solid #3498db;
+text-align: center;
+padding: 20px;
+background: #0a3d62;
+color: #fff;
 }
-
 .logo {
-    max-width: 150px;
+width: 120px;
+border-radius: 50%;
 }
-
-nav {
-    text-align: center;
-    background: #3498db;
-    padding: 10px 0;
+.hero {
+padding: 40px;
+text-align: center;
+background: #82ccdd;
+color: #0a3d62;
 }
-
-nav a {
-    color: white;
-    margin: 0 15px;
-    text-decoration: none;
-    font-weight: bold;
-}
-
 section {
-    padding: 30px;
-    background: white;
-    margin: 20px auto;
-    width: 90%;
-    max-width: 900px;
-    border-radius: 10px;
+padding: 30px;
+max-width: 900px;
+margin: auto;
 }
-
-.branch {
-    background: #eef5ff;
-    margin: 15px 0;
-    padding: 15px;
-    border-left: 4px solid #3498db;
-    border-radius: 6px;
+h2 {
+color: #0a3d62;
 }
-
+.blog article {
+background: #fff;
+padding: 20px;
+border-radius: 10px;
+box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.unified {
+font-weight: bold;
+margin-top: 20px;
+background: #dff9fb;
+padding: 10px;
+border-left: 5px solid #0a3d62;
+}
 footer {
-    text-align: center;
-    padding: 15px;
-    background: #3498db;
-    color: white;
-    margin-top: 30px;
-}
-
-.socials a {
-    color: #3498db;
+text-align: center;
+padding: 20px;
+background: #0a3d62;
+color: white;
+margin-top: 40px;
 }

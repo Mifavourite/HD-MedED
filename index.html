@@ -1,89 +1,184 @@
-```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Helpers Dynasty</title>
-<link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Helpers Dynasty (HD) — Unity in Service</title>
+
+  <!-- SEO / Social -->
+  <meta name="description" content="Helpers Dynasty (HD) — global healthcare volunteer & education community. Mentorship, study groups, outreach, and leadership since Feb 24, 2017." />
+  <meta property="og:title" content="Helpers Dynasty (HD) — Unity in Service" />
+  <meta property="og:description" content="Mentorship, study groups, outreach, fellowship & research. Join HD's global community." />
+  <meta property="og:image" content="ok.jpg" />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://helpersdynasty.com/" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-<header>
-<img src="ok.jpg" alt="Helpers Dynasty Logo" class="logo">
-<h1>Helpers Dynasty</h1>
-<p>Unity • Service • Growth</p>
-</header>
 
+  <!-- Header / Hero -->
+  <header class="site-header">
+    <div class="topbar container">
+      <a class="brand" href="/">
+        <img src="ok.jpg" alt="Helpers Dynasty logo" class="logo">
+        <div class="brand-text">
+          <span class="brand-name">Helpers Dynasty (HD)</span>
+          <small class="brand-sub">Unity in Service · Growth through Fellowship in Love</small>
+        </div>
+      </a>
 
-<!-- NAVIGATION -->
-<nav class="navbar">
-<div class="hamburger">
-<span></span><span></span><span></span>
-</div>
-<ul class="nav-menu">
-<li><a href="#vision">Vision</a></li>
-<li><a href="#blog">Blog</a></li>
-<li><a href="#hd-updates">HD Structure</a></li>
-<li><a href="login.html">Login</a></li>
-</ul>
-<button id="theme-toggle">🌙</button>
-</nav>
+      <div class="header-actions">
+        <button id="themeToggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
+        <a href="login.html" class="btn btn-ghost">Member Login</a>
+        <button class="hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
 
+    <nav class="nav container" role="navigation" aria-label="Main navigation">
+      <ul class="nav-menu">
+        <li><a href="#about">About</a></li>
+        <li><a href="#structure">Structure</a></li>
+        <li><a href="#activities">Activities</a></li>
+        <li><a href="#membership">Membership</a></li>
+        <li><a href="#blog">Bi-Monthly Unifier</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
 
-<section class="hero">
-<h2>Building a Community of Collaboration in Healthcare</h2>
-<p>Where passion meets purpose — and every member has a place.</p>
-</section>
+    <section class="hero container">
+      <div class="hero-left">
+        <h1>Helpers Dynasty (HD)</h1>
+        <p class="lead">A global network of healthcare minds dedicated to leadership, mentorship, outreach and compassionate service. Founded <strong>24th February 2017</strong>.</p>
 
+        <div class="hero-cta">
+          <a href="#membership" class="btn btn-primary">Join HD (free)</a>
+          <a href="#blog" class="btn btn-outline">Read Bi-Monthly Unifier</a>
+        </div>
 
-<section id="vision" class="vision">
-<h2>Our Vision</h2>
-<ul>
-<li>Nigeria team meets monthly for hangouts + healthcare topic discussions.</li>
-<li>Nigeria team alternates months to plan healthcare-related service projects.</li>
-<li>International team meets monthly for medical discussions + case reviews.</li>
-<li>International team alternates months to plan research projects + group development.</li>
-<li>HD Hope meets once monthly for group direction and grassroots planning.</li>
-<li>Group Study: at least 3 times weekly for discipline, accountability, and friendship.</li>
-<li>Our official blog: <b>Bi‑Monthly Unifier</b></li>
-</ul>
-</section>
+        <ul class="quicklist">
+          <li>Monthly hangouts (Nigeria & International)</li>
+          <li>Group study 3× weekly (7–10pm EST)</li>
+          <li>Mentor–mentee pairing • Research help • Outreach</li>
+        </ul>
+      </div>
 
+      <aside class="hero-card">
+        <img src="ok.jpg" alt="HD logo" class="card-img">
+        <div class="card-info">
+          <h4>Quick Facts</h4>
+          <p><strong>Birthday:</strong> 24 Feb 2017</p>
+          <p><strong>Blog:</strong> Bi-Monthly Unifier (case-based)</p>
+          <p><strong>Membership:</strong> Free after 5 meetings</p>
+        </div>
+      </aside>
+    </section>
+  </header>
 
-<section id="blog" class="blog">
-<h2>Bi‑Monthly Unifying Scenario</h2>
-<article>
-<h3>Early CKD — A Shared Healthcare Response</h3>
-<p><strong>Scenario:</strong> Mr. Ade, 52, presents with fatigue, swollen ankles, low urine output, and uncontrolled hypertension. His BP is 168/102 mmHg, and he has poor medication adherence. Early Chronic Kidney Disease (CKD) is suspected.</p>
+  <main>
 
+    <!-- About / Mission -->
+    <section id="about" class="container section fade">
+      <h2>Purpose & Mission</h2>
+      <p class="lead">Helpers Dynasty International is dedicated to developing compassionate healthcare minds who extend kindness to communities, care strategically for people, and foster fellowship and mutual understanding among members worldwide.</p>
+    </section>
 
-<h4>How Each Member of the Health Ecosystem Responds</h4>
-<ul>
-<li><strong>Clinician:</strong> Orders kidney tests, adjusts medication, and creates a plan.</li>
-<li><strong>Nurse:</strong> Reinforces adherence, monitors vitals, and educates on diet.</li>
-<li><strong>Medical Student:</strong> Takes history, performs exam, interprets basic labs.</li>
-<li><strong>Lab Scientist:</strong> Runs kidney markers accurately and flags abnormalities.</li>
-<li><strong>Allied Health:</strong> (Dietitian, Pharmacist, Physiotherapist) — diet, meds, exercise guidance.</li>
-<li><strong>Public Health Officer:</strong> Identifies population risk + community strategies.</li>
-<li><strong>Health Manager:</strong> Ensures supplies, systems, referrals, and quality control.</li>
-<li><strong>Caregiver:</strong> Supports adherence, BP checks, diet, and follow‑ups.</li>
-<li><strong>Health Software Developer:</strong> Builds apps for reminders, alerts, BP tracking, education.</li>
-</ul>
+    <!-- Structure -->
+    <section id="structure" class="container section fade">
+      <h2>Helpers Dynasty (HD) — Structure & Branches</h2>
+      <p>Overview: HD is a global network operating through charter societies — semi-autonomous sub-communities aligned to our core mission.</p>
 
+      <div class="grid-3">
+        <article class="card">
+          <h3>HD Management</h3>
+          <p>Governing body overseeing administration, coordination, growth and leadership programs across countries.</p>
+        </article>
 
-<p class="unified">Every role matters. Every action protects a life. The health ecosystem needs you — just like Helpers Dynasty does.</p>
-</article>
-</section>
+        <article class="card">
+          <h3>HD International</h3>
+          <p>Global charter for members not in a national society — virtual mentorship, research assistance and global study sessions.</p>
+        </article>
 
+        <article class="card">
+          <h3>HD Nigeria</h3>
+          <p>Pioneer national chapter; expanding into school-based branches. Focus: healthcare education, leadership, and community projects.</p>
+        </article>
 
-<!-- COUNTERS SECTION -->
-<section id="counters" class="counters-section">
-<div class="counter-box"><span class="counter" data-target="2017">0</span><p>Founded</p></div>
-<div class="counter-box"><span class="counter" data-target="500">0</span><p>Members Reached</p></div>
-<div class="counter-box"><span class="counter" data-target="50">0</span><p>Projects</p></div>
-</section>
+        <article class="card">
+          <h3>HD Hope</h3>
+          <p>Motivational arm — youth mentorship, motivational media, and scholarships for high schoolers.</p>
+        </article>
 
+        <article class="card">
+          <h3>HD Sponsors</h3>
+          <p>Financial & partnership division — works with donors, sponsors and supporters to fund HD activities globally.</p>
+        </article>
+      </div>
+    </section>
 
-<footer>
-<p>&copy; 2025 Helpers Dynasty. All Rights Reserved.</p>
-```
+    <!-- Activities & Core -->
+    <section id="activities" class="container section fade">
+      <h2>Core Activities</h2>
+
+      <ul class="activities">
+        <li><strong>Study With Me Live Sessions</strong> — 3× weekly, 7:00–10:00 PM EST. Consistency, accountability, community learning.</li>
+        <li><strong>Mentor–Mentee Pairing</strong> — connect members for career and skills support.</li>
+        <li><strong>Educational Resource Sharing</strong> — study materials, recorded sessions, tools.</li>
+        <li><strong>Research Assistance</strong> — collaboration & support for academic/professional research.</li>
+        <li><strong>Bi-monthly Saturday Hangouts</strong> — interactive sessions on life, medicine & community bonding.</li>
+      </ul>
+    </section>
+
+    <!-- Blog / Bi-Monthly Unifier (single post visible) -->
+    <section id="blog" class="container section fade">
+      <h2>Bi-Monthly Unifier — First Post</h2>
+
+      <article class="post card">
+        <h3>Scenario: Early CKD — A Team Response</h3>
+        <p class="meta">Published: <time datetime="2025-11-26">November 26, 2025</time> · Read ~4 mins</p>
+
+        <p><strong>Case:</strong> Mr. Ade, 52, presents with fatigue, swollen ankles and low urine output. BP 168/102 mmHg. Suspect early chronic kidney disease. Poor medication adherence.</p>
+
+        <div class="roles grid-3">
+          <div class="role"><h4>Clinician</h4><p>Order labs (creatinine, eGFR, urinalysis), adjust therapy, plan follow-up, patient education.</p></div>
+          <div class="role"><h4>Nurse</h4><p>Vitals, teach home BP monitoring, adherence counseling, low-salt diets.</p></div>
+          <div class="role"><h4>Medical Student</h4><p>History, supervised exam, case presentation and learning.</p></div>
+          <div class="role"><h4>Lab Scientist</h4><p>Run and validate kidney markers, report urgent abnormal results.</p></div>
+          <div class="role"><h4>Allied Health</h4><p>Diet, pharmacy reconciliation, physiotherapy plan.</p></div>
+          <div class="role"><h4>Public Health</h4><p>Community screening plans, awareness, and prevention programs.</p></div>
+          <div class="role"><h4>Health Manager</h4><p>Ensure supplies, referral pathways and follow-up systems.</p></div>
+          <div class="role"><h4>Caregiver</h4><p>Medication reminders, emotional support, transport to appointments.</p></div>
+          <div class="role"><h4>Health Software Dev</h4><p>Flag low eGFR, reminders, BP logging and clinician alerts systems.</p></div>
+        </div>
+
+        <p class="emph">Unified message: Every role matters. Every action protects a life.</p>
+      </article>
+    </section>
+
+    <!-- Counters -->
+    <section id="stats" class="container section fade">
+      <div class="stats-grid">
+        <div class="stat card">
+          <span class="num counter" data-target="2017">0</span>
+          <p>Founded</p>
+        </div>
+        <div class="stat card">
+          <span class="num counter" data-target="500">0</span>
+          <p>Members Reached</p>
+        </div>
+        <div class="stat card">
+          <span class="num counter" data-target="120">0</span>
+          <p>Projects</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Carousel -->
+    <section id="highlights" class="container section fade">
+      <h2>Our Highlights</h2>
+      <div class="carousel">
+        <div class="carousel-track">
+          <div class="carousel-item active"><img src="ok.jpg" alt=""><p class="cap">Unity in Service</p></div>

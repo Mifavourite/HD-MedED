@@ -1,71 +1,51 @@
 ```javascript
-counters.forEach(counter => {
-const target = +counter.getAttribute('data-target');
-let count = 0;
+console.log("Helpers Dynasty website loaded.");
 
 
-const updateCounter = () => {
-if (count < target) {
-count += Math.ceil(target / 120);
-counter.innerText = count;
-requestAnimationFrame(updateCounter);
-} else {
-counter.innerText = target;
-}
-};
+// Mobile Navigation Menu
+function initMobileMenu() {
+const hamburger = document.querySelector('.hamburger');
+const navMenu = document.querySelector('.nav-menu');
 
 
-updateCounter();
+if (hamburger) {
+hamburger.addEventListener('click', () => {
+hamburger.classList.toggle('active');
+navMenu.classList.toggle('active');
 });
 }
-
-
-// Theme Switcher
-function initThemeSwitcher() {
-const toggle = document.createElement('button');
-toggle.id = 'themeToggle';
-toggle.textContent = '🌙';
-document.body.appendChild(toggle);
-
-
-toggle.addEventListener('click', () => {
-document.body.classList.toggle('dark');
-toggle.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
-});
 }
 
 
-// Member Login Validation
-function initLoginValidation() {
-const form = document.querySelector('#loginForm');
-if (!form) return;
-
-
-form.addEventListener('submit', e => {
-const username = document.querySelector('#username');
-const password = document.querySelector('#password');
-
-
-if (username.value.trim() === '' || password.value.trim() === '') {
+// Smooth Scrolling
+function initSmoothScroll() {
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', function (e) {
 e.preventDefault();
-alert('Please enter both username and password.');
+const target = document.querySelector(this.getAttribute('href'));
+if (target) {
+target.scrollIntoView({ behavior: 'smooth' });
 }
+});
 });
 }
 
 
-// Initialize Everything
-
-
-document.addEventListener('DOMContentLoaded', () => {
-initMobileMenu();
-initSmoothScroll();
-initFadeIn();
-initBackToTop();
-initCarousel();
-initCounters();
-initThemeSwitcher();
-initLoginValidation();
-console.log('Website initialized with full interactive features!');
+// Fade-In Animations
+function initFadeIn() {
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.classList.add('visible');
+}
 });
-```
+});
+
+
+document.querySelectorAll('.section, article').forEach(el => observer.observe(el));
+}
+
+
+// Back to Top Button
+function initBackToTop() {
+const btn = document.createElement('button');

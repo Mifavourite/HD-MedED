@@ -8,12 +8,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const card = document.createElement("div");
     card.classList.add("blog-card", "fade");
 
-    card.innerHTML = `
-      <h3>${post.title}</h3>
-      <span class="meta">${post.date} • ${post.category}</span>
-      <p>${post.content.substring(0, 150)}...</p>
+    // Safely create excerpt from HTML content
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = post.content;
+    const textContent = tempDiv.textContent || tempDiv.innerText || "";
+    const excerpt = textContent.length > 150 ? textContent.substring(0, 150) + "..." : textContent;
 
-      <a class="btn btn-outline" href="blog.html?post=${post.id}">
+    card.innerHTML = `
+      <h3>${escapeHTML(post.title)}</h3>
+      <span class="meta">${escapeHTML(post.date)} • ${escapeHTML(post.category)}</span>
+      <p>${escapeHTML(excerpt)}</p>
+      <a class="btn btn-outline" href="blog.html?post=${encodeURIComponent(post.id)}">
         Read More
       </a>
     `;
@@ -39,4 +44,11 @@ function fadeInOnScroll() {
 
   window.addEventListener("scroll", check);
   check();
+}
+
+// Escape HTML to prevent injection
+function escapeHTML(str) {
+  const div = document.createElement("div");
+  div.textContent = str;
+  return div.innerHTML;
 }

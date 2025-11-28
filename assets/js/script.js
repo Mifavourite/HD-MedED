@@ -261,44 +261,6 @@ const qsa = s => Array.from(document.querySelectorAll(s));
   loadEvents();
 })();
 
-/* Blog system (simple client-side posts) */
-(function(){
-  // posts data (could be moved to separate JSON file)
-  const posts = [
-    {id:1,title:'Bi-Monthly Unifier — Early CKD Scenario',category:'case',date:'2025-11-26',excerpt:'Practical role-by-role walkthrough...',content:'<p>Full post content here. Use this as the single visible post. Older posts archived.</p>'},
-    {id:2,title:'Study With Me — Tips for Focus',category:'study',date:'2025-10-01',excerpt:'How to stay consistent...',content:'<p>Study tips...</p>'}
-  ];
-  if(!location.pathname.endsWith('blog.html')) return;
-  const postsContainer = qs('#postsContainer');
-  const categorySel = qs('#blogCategory');
-  const searchInput = qs('#blogSearch');
-  // populate categories
-  const cats = ['all', ...new Set(posts.map(p=>p.category))];
-  cats.forEach(c => categorySel && categorySel.insertAdjacentHTML('beforeend', `<option value="${c}">${c}</option>`));
-  function render(pArr){
-    postsContainer.innerHTML = pArr.map(p => `<article class="card"><h3>${p.title}</h3><p class="meta">${p.date} • ${p.category}</p><p>${p.excerpt}</p><div class="form-actions"><a href="#" class="btn btn-primary" data-id="${p.id}" onclick="openPost(${p.id})">Read</a></div></article>`).join('');
-  }
-  window.openPost = function(id){
-    const post = posts.find(x=>x.id===id);
-    if(!post) return alert('Post not found');
-    // simple modal-like view using window.open or replace content
-    const w = window.open('', '_blank');
-    w.document.write(`<html><head><title>${post.title}</title><link rel="stylesheet" href="styles.css"></head><body><div class="container"><h1>${post.title}</h1><p class="meta">${post.date}</p>${post.content}<p><a href="blog.html">Back</a></p></div></body></html>`);
-    w.document.close();
-  };
-  function filterRender(){
-    const cat = categorySel.value;
-    const q = searchInput.value.trim().toLowerCase();
-    let res = posts;
-    if(cat && cat!=='all') res = res.filter(p=>p.category===cat);
-    if(q) res = res.filter(p=> p.title.toLowerCase().includes(q) || p.excerpt.toLowerCase().includes(q));
-    render(res);
-  }
-  categorySel && categorySel.addEventListener('change', filterRender);
-  searchInput && searchInput.addEventListener('input', filterRender);
-  render(posts);
-})();
-
 /* Members directory (demo) */
 (function(){
   if(!location.pathname.endsWith('members.html')) return;

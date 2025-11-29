@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const tempDiv = document.createElement("div");
     tempDiv.innerHTML = post.content;
     const textContent = tempDiv.textContent || tempDiv.innerText || "";
-    const excerpt = textContent.length > 150 ? textContent.substring(0, 15000) + "..." : textContent;
+    const excerpt = textContent.length > 150 ? textContent.substring(0, 150) + "..." : textContent;
 
     card.innerHTML = `
       <h3>${escapeHTML(post.title)}</h3>

@@ -1,26 +1,63 @@
-<!-- FILE: events.html -->
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <title>Events — Helpers Dynasty</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="description"
+        content="Explore upcoming events organized by Helpers Dynasty. Add or register for events and sync with Google Calendar." />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
+
 <body>
+  <!-- ================= HEADER ================= -->
   <header class="site-header container">
-    <a class="brand" href="index.html"><img src="ok.jpg" class="logo" alt="HD"></a>
+    <a class="brand" href="index.html">
+      <img src="ok.jpg" class="logo" alt="Helpers Dynasty logo" />
+      <div class="brand-text">
+        <div class="brand-name">Helpers Dynasty</div>
+      </div>
+    </a>
   </header>
 
+  <!-- ================= MAIN ================= -->
   <main class="container section fade">
     <h2>Upcoming Events</h2>
+    <p class="muted">
+      View and register for upcoming events. You can also quickly add demo events below.
+    </p>
 
-    <div id="eventsList"></div>
+    <!-- EVENTS LIST -->
+    <div id="eventsList" aria-live="polite"></div>
 
-    <h3 class="mt">Quick Add (demo)</h3>
+    <!-- QUICK ADD FORM (DEMO) -->
+    <h3 class="mt">Quick Add Event (Demo)</h3>
     <form id="addEventForm" class="card">
-      <input id="eventTitle" placeholder="Event title" required />
-      <input id="eventDate" type="date" required />
-      <input id="eventTime" type="time" required />
+      <input
+        id="eventTitle"
+        type="text"
+        placeholder="Event title"
+        required
+        aria-label="Event title"
+      />
+
+      <input
+        id="eventDate"
+        type="date"
+        required
+        aria-label="Event date"
+      />
+
+      <input
+        id="eventTime"
+        type="time"
+        required
+        aria-label="Event time"
+      />
+
       <div class="form-actions">
         <button class="btn btn-primary" type="submit">Add Event</button>
         <button class="btn btn-ghost" type="reset">Reset</button>
@@ -28,6 +65,7 @@
     </form>
   </main>
 
-  <script src="script.js"></script>
+  <!-- ================= SCRIPTS ================= -->
+  <script src="assets/js/script.js" defer></script>
 </body>
 </html>

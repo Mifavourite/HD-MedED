@@ -162,14 +162,10 @@ const qsa = s => Array.from(document.querySelectorAll(s));
   const founderTimelineEl = qs('#founderTimeline');
   
   const timelineData = [
-    { year: '2017', event: 'Helpers Dynasty founded on February 24' },
-    { year: '2018', event: 'First study sessions and mentorship programs launched' },
-    { year: '2019', event: 'Community expansion and outreach initiatives begin' },
-    { year: '2020', event: 'Virtual study sessions established during pandemic' },
-    { year: '2021', event: 'Research collaboration programs introduced' },
-    { year: '2022', event: 'Global membership growth and leadership development' },
-    { year: '2023', event: 'Enhanced mentorship and professional development' },
-    { year: '2024', event: 'Continued community growth and impact' },
+    { year: '2017', event: 'Helpers Dynasty founded on February 24 with Helpers Dynasty SKN as the first chapter'},
+    { year: '2018', event: 'Helpers Dynasty ABSU & Helpers Dynasty Guyana Lunched' },
+    { year: '2019', event: 'Community expansion and outreach initiatives continued' },
+    { year: '2020 - 2024', event: 'Operational pause' },
     { year: '2025', event: 'Ongoing commitment to healthcare excellence' }
   ];
   

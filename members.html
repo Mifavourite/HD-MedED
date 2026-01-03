@@ -1,23 +1,47 @@
-<!-- FILE: members.html -->
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Members Directory — Helpers Dynasty</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <header class="site-header container"><a href="index.html" class="brand"><img src="ok.jpg" class="logo"></a></header>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+  <title>Members Directory — Helpers Dynasty</title>
+  <meta name="description"
+        content="Explore the Members Directory of Helpers Dynasty. Search by name, country, role, or interests." />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body>
+  <!-- ================= HEADER ================= -->
+  <header class="site-header container">
+    <a class="brand" href="index.html">
+      <img src="ok.jpg" class="logo" alt="Helpers Dynasty logo" />
+      <div class="brand-text">
+        <div class="brand-name">Helpers Dynasty</div>
+      </div>
+    </a>
+  </header>
+
+  <!-- ================= MAIN ================= -->
   <main class="container section fade">
     <h2>Members Directory</h2>
+
+    <!-- SEARCH -->
     <div class="card">
-      <input id="memberSearch" placeholder="Search by name, country, role or interest" />
+      <input
+        id="memberSearch"
+        type="text"
+        placeholder="Search by name, country, role or interest"
+        aria-label="Search members by name, country, role or interest"
+      />
     </div>
 
-    <div id="membersList" class="grid-3 mt"></div>
+    <!-- MEMBERS LIST -->
+    <div id="membersList" class="grid-3 mt" aria-live="polite"></div>
   </main>
 
-  <script src="script.js"></script>
+  <!-- ================= SCRIPTS ================= -->
+  <script src="assets/js/script.js" defer></script>
 </body>
 </html>

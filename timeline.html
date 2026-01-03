@@ -1,21 +1,44 @@
-<!-- FILE: timeline.html -->
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <title>Timeline — Helpers Dynasty</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="description"
+        content="Explore the history and milestones of Helpers Dynasty from its founding in 2017 to its global expansion in 2025." />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
+
 <body>
+  <!-- ================= HEADER ================= -->
   <header class="site-header container">
-    <a class="brand" href="index.html"><img src="ok.jpg" class="logo" alt="HD"><div class="brand-text"><div class="brand-name">Helpers Dynasty</div></div></a>
+    <a class="brand" href="index.html">
+      <img src="ok.jpg" class="logo" alt="Helpers Dynasty logo" />
+      <div class="brand-text">
+        <div class="brand-name">Helpers Dynasty</div>
+      </div>
+    </a>
   </header>
 
+  <!-- ================= MAIN ================= -->
   <main class="container section fade">
-    <h2>HD Timeline (2017 — 2025)</h2>
-    <div class="timeline-vertical" id="timeline"></div>
+    <h2>Helpers Dynasty Timeline (2017 — 2025)</h2>
+    <p class="muted">
+      A chronological overview of the milestones, expansions, and achievements of Helpers Dynasty.
+    </p>
+
+    <!-- Timeline container (populated dynamically via script.js) -->
+    <div
+      class="timeline-vertical"
+      id="timeline"
+      aria-label="Helpers Dynasty historical timeline">
+    </div>
   </main>
 
-  <script src="script.js"></script>
+  <!-- ================= SCRIPTS ================= -->
+  <script src="assets/js/script.js" defer></script>
 </body>
 </html>

@@ -109,3 +109,237 @@ const qsa = s => Array.from(document.querySelectorAll(s));
   loadMeetCount();
   renderNotifications();
 })();
+
+/* =========================
+   Theme Toggle
+========================= */
+(function themeModule() {
+  const themeBtn = qs('#themeToggle');
+  if (!themeBtn) return;
+  
+  const themeKey = 'hd-theme';
+  const savedTheme = localStorage.getItem(themeKey) || 'light';
+  
+  if (savedTheme === 'dark') document.body.classList.add('dark');
+  
+  themeBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    const isDark = document.body.classList.contains('dark');
+    localStorage.setItem(themeKey, isDark ? 'dark' : 'light');
+  });
+})();
+
+/* =========================
+   Hamburger Menu
+========================= */
+(function hamburgerModule() {
+  const hamburger = qs('.hamburger');
+  const navMenu = qs('.nav-menu');
+  if (!hamburger || !navMenu) return;
+  
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('active');
+    const expanded = hamburger.classList.contains('active');
+    hamburger.setAttribute('aria-expanded', expanded);
+  });
+  
+  // Close on link click
+  qsa('.nav-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      navMenu.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+})();
+
+/* =========================
+   Timeline
+========================= */
+(function timelineModule() {
+  const timelineEl = qs('#timeline');
+  const founderTimelineEl = qs('#founderTimeline');
+  
+  const timelineData = [
+    { year: '2017', event: 'Helpers Dynasty founded on February 24' },
+    { year: '2018', event: 'First study sessions and mentorship programs launched' },
+    { year: '2019', event: 'Community expansion and outreach initiatives begin' },
+    { year: '2020', event: 'Virtual study sessions established during pandemic' },
+    { year: '2021', event: 'Research collaboration programs introduced' },
+    { year: '2022', event: 'Global membership growth and leadership development' },
+    { year: '2023', event: 'Enhanced mentorship and professional development' },
+    { year: '2024', event: 'Continued community growth and impact' },
+    { year: '2025', event: 'Ongoing commitment to healthcare excellence' }
+  ];
+  
+  function renderTimeline(container, data) {
+    if (!container) return;
+    container.innerHTML = data.map(item => `
+      <div class="timeline-item">
+        <strong>${item.year}</strong> — ${item.event}
+      </div>
+    `).join('');
+  }
+  
+  renderTimeline(timelineEl, timelineData);
+  renderTimeline(founderTimelineEl, timelineData.slice(0, 3));
+})();
+
+/* =========================
+   Members Directory
+========================= */
+(function membersModule() {
+  const searchInput = qs('#memberSearch');
+  const membersList = qs('#membersList');
+  if (!searchInput || !membersList) return;
+  
+  const membersData = [
+    { name: 'Lordsfavour Anukam', country: 'Nigeria', role: 'Founder', interest: 'Public Health' },
+    { name: 'Samuel', country: 'Nigeria', role: 'Youth Leader', interest: 'Leadership' },
+    { name: 'Emmanuel', country: 'Nigeria', role: 'Social Media Manager', interest: 'Digital Health' },
+    { name: 'Blessing', country: 'Nigeria', role: 'Public Health Advocate', interest: 'Health Education' },
+    { name: 'Alice', country: 'Nigeria', role: 'Welfare Director', interest: 'Community Care' }
+  ];
+  
+  function renderMembers(members) {
+    membersList.innerHTML = members.map(m => `
+      <div class="card member-card">
+        <h3>${m.name}</h3>
+        <p class="muted">${m.country} • ${m.role}</p>
+        <p>${m.interest}</p>
+      </div>
+    `).join('');
+  }
+  
+  function filterMembers(query) {
+    const lowerQuery = query.toLowerCase();
+    const filtered = membersData.filter(m => 
+      m.name.toLowerCase().includes(lowerQuery) ||
+      m.country.toLowerCase().includes(lowerQuery) ||
+      m.role.toLowerCase().includes(lowerQuery) ||
+      m.interest.toLowerCase().includes(lowerQuery)
+    );
+    renderMembers(filtered);
+  }
+  
+  searchInput.addEventListener('input', (e) => {
+    filterMembers(e.target.value);
+  });
+  
+  renderMembers(membersData);
+})();
+
+/* =========================
+   Events
+========================= */
+(function eventsModule() {
+  const eventsList = qs('#eventsList');
+  const addEventForm = qs('#addEventForm');
+  if (!eventsList) return;
+  
+  const eventsKey = 'hd-events';
+  
+  function loadEvents() {
+    const events = JSON.parse(localStorage.getItem(eventsKey) || '[]');
+    if (events.length === 0) {
+      eventsList.innerHTML = '<p class="muted">No events scheduled yet.</p>';
+      return;
+    }
+    
+    eventsList.innerHTML = events.map(e => `
+      <div class="card">
+        <h3>${e.title}</h3>
+        <p class="muted">${new Date(e.date + 'T' + e.time).toLocaleString()}</p>
+      </div>
+    `).join('');
+  }
+  
+  if (addEventForm) {
+    addEventForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const title = qs('#eventTitle').value;
+      const date = qs('#eventDate').value;
+      const time = qs('#eventTime').value;
+      
+      const events = JSON.parse(localStorage.getItem(eventsKey) || '[]');
+      events.push({ title, date, time, id: Date.now() });
+      localStorage.setItem(eventsKey, JSON.stringify(events));
+      
+      loadEvents();
+      addEventForm.reset();
+    });
+  }
+  
+  loadEvents();
+})();
+
+/* =========================
+   Back to Top
+========================= */
+(function backToTopModule() {
+  const backToTopBtn = qs('#backToTop');
+  if (!backToTopBtn) return;
+  
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      backToTopBtn.style.display = 'block';
+    } else {
+      backToTopBtn.style.display = 'none';
+    }
+  });
+  
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
+
+/* =========================
+   Footer Year
+========================= */
+(function footerYearModule() {
+  const yearEl = qs('#thisYear');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+})();
+
+/* =========================
+   Login Form
+========================= */
+(function loginModule() {
+  const loginForm = qs('#loginPageForm');
+  if (!loginForm) return;
+  
+  loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = qs('#loginEmail').value;
+    const password = qs('#loginPass').value;
+    
+    // Demo: simple validation
+    if (email && password) {
+      // Store login state
+      localStorage.setItem('hd-logged-in', 'true');
+      localStorage.setItem('hd-login-email', email);
+      alert('Login successful! Redirecting to dashboard...');
+      window.location.href = 'dashboard.html';
+    } else {
+      alert('Please enter both email and password.');
+    }
+  });
+})();
+
+/* =========================
+   Fade Animations
+========================= */
+(function fadeModule() {
+  const fadeElements = qsa('.fade');
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  
+  fadeElements.forEach(el => observer.observe(el));
+})();

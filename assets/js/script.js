@@ -197,7 +197,7 @@ const qsa = s => Array.from(document.querySelectorAll(s));
     { name: 'Blessing Ndubueze', role: 'Public Health Advocate', interest: 'Health Education' },
     { name: 'Alice', country: ' role: 'Welfare Director', interest: 'Community Care' }
     { name: 'Esther Ikechukwu' }
-   { name: 'Many others that hope not to be listed' }
+   { name: 'And many other dedicated members who prefer not to be publicly listed' }
   ];
   
   function renderMembers(members) {

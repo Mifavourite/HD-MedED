@@ -166,7 +166,7 @@ const qsa = s => Array.from(document.querySelectorAll(s));
     { year: '2018', event: 'Helpers Dynasty ABSU & Helpers Dynasty Guyana Lunched' },
     { year: '2019', event: 'Community expansion and outreach initiatives continued' },
     { year: '2020 - 2024', event: 'Operational pause' },
-    { year: '2025', event: 'Ongoing commitment to healthcare excellence' }
+    { year: '2025', event: 'Resumed activities with a commitment to healthcare excellence' }
   ];
   
   function renderTimeline(container, data) {
@@ -191,11 +191,13 @@ const qsa = s => Array.from(document.querySelectorAll(s));
   if (!searchInput || !membersList) return;
   
   const membersData = [
-    { name: 'Lordsfavour Anukam', country: 'Nigeria', role: 'Founder', interest: 'Public Health' },
-    { name: 'Samuel', country: 'Nigeria', role: 'Youth Leader', interest: 'Leadership' },
-    { name: 'Emmanuel', country: 'Nigeria', role: 'Social Media Manager', interest: 'Digital Health' },
-    { name: 'Blessing', country: 'Nigeria', role: 'Public Health Advocate', interest: 'Health Education' },
-    { name: 'Alice', country: 'Nigeria', role: 'Welfare Director', interest: 'Community Care' }
+    { name: 'Lordsfavour Anukam', role: 'Founder', interest: 'Digital Health' },
+    { name: 'Samuel Anukam', role: 'Youth Leader', interest: 'Youth Mentorship' },
+    { name: 'Emmanuel Peculiar', role: 'Social Media Manager', interest: 'Social Media' },
+    { name: 'Blessing Ndubueze', role: 'Public Health Advocate', interest: 'Health Education' },
+    { name: 'Alice', country: ' role: 'Welfare Director', interest: 'Community Care' }
+    { name: 'Esther Ikechukwu' }
+   { name: 'Many others that hope not to be listed' }
   ];
   
   function renderMembers(members) {

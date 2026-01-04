@@ -4,11 +4,16 @@
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Member Login — Helpers Dynasty</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body class="auth-page">
   <main class="auth-card">
-    <a href="index.html" class="brand auth-brand"><img src="ok.jpg" alt="HD" class="logo-small"><span>Helpers Dynasty</span></a>
+    <a href="index.html" class="brand auth-brand">
+      <div class="auth-logo-wrapper">
+        <img src="ok.jpg" alt="HD" class="logo-small">
+      </div>
+      <span class="auth-brand-name">Helpers Dynasty</span>
+    </a>
     <h2>Member Login</h2>
     <form id="loginPageForm" class="card">
       <label>Email or Username<input id="loginEmail" type="text" required /></label>
@@ -22,6 +27,6 @@
     <p class="muted">This is a static demo — on success you will be redirected to a local dashboard.</p>
   </main>
 
-  <script src="script.js"></script>
+  <script src="assets/js/script.js" defer></script>
 </body>
 </html>

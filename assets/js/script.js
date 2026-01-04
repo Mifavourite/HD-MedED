@@ -162,11 +162,15 @@ const qsa = s => Array.from(document.querySelectorAll(s));
   const founderTimelineEl = qs('#founderTimeline');
   
   const timelineData = [
-    { year: '2017', event: 'Helpers Dynasty founded on February 24 with Helpers Dynasty SKN as the first chapter'},
-    { year: '2018', event: 'Helpers Dynasty ABSU & Helpers Dynasty Guyana Lunched' },
-    { year: '2019', event: 'Community expansion and outreach initiatives continued' },
-    { year: '2020 - 2024', event: 'Operational pause' },
-    { year: '2025', event: 'Resumed activities with a commitment to healthcare excellence' }
+    { year: '2017', event: 'Helpers Dynasty founded on February 24' },
+    { year: '2018', event: 'First study sessions and mentorship programs launched' },
+    { year: '2019', event: 'Community expansion and outreach initiatives begin' },
+    { year: '2020', event: 'Virtual study sessions established during pandemic' },
+    { year: '2021', event: 'Research collaboration programs introduced' },
+    { year: '2022', event: 'Global membership growth and leadership development' },
+    { year: '2023', event: 'Enhanced mentorship and professional development' },
+    { year: '2024', event: 'Continued community growth and impact' },
+    { year: '2025', event: 'Ongoing commitment to healthcare excellence' }
   ];
   
   function renderTimeline(container, data) {
@@ -195,16 +199,16 @@ const qsa = s => Array.from(document.querySelectorAll(s));
     { name: 'Samuel Anukam', role: 'Youth Leader', interest: 'Youth Mentorship' },
     { name: 'Emmanuel Peculiar', role: 'Social Media Manager', interest: 'Social Media' },
     { name: 'Blessing Ndubueze', role: 'Public Health Advocate', interest: 'Health Education' },
-    { name: 'Alice', country: ' role: 'Welfare Director', interest: 'Community Care' }
-    { name: 'Esther Ikechukwu' }
-   { name: 'And many other dedicated members who prefer not to be publicly listed' }
+    { name: 'Alice', role: 'Welfare Director', interest: 'Community Care' },
+    { name: 'Esther Ikechukwu', role: 'Member', interest: 'Community Service' },
+    { name: 'And many other dedicated members who prefer not to be publicly listed', role: 'Member', interest: 'Various' }
   ];
   
   function renderMembers(members) {
     membersList.innerHTML = members.map(m => `
       <div class="card member-card">
         <h3>${m.name}</h3>
-        <p class="muted">${m.country} • ${m.role}</p>
+        <p class="muted">${m.role}</p>
         <p>${m.interest}</p>
       </div>
     `).join('');
@@ -214,7 +218,6 @@ const qsa = s => Array.from(document.querySelectorAll(s));
     const lowerQuery = query.toLowerCase();
     const filtered = membersData.filter(m => 
       m.name.toLowerCase().includes(lowerQuery) ||
-      m.country.toLowerCase().includes(lowerQuery) ||
       m.role.toLowerCase().includes(lowerQuery) ||
       m.interest.toLowerCase().includes(lowerQuery)
     );

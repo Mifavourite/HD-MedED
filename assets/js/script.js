@@ -161,7 +161,7 @@ const qsa = s => Array.from(document.querySelectorAll(s));
     { name: 'Blessing Ndubueze', role: 'Public Health Advocate', interest: 'Health Education' },
     { name: 'Alice', role: 'Welfare Director', interest: 'Community Care' },
     { name: 'Esther Ikechukwu', role: 'Member', interest: 'Community Service' },
-    { name: 'And many other dedicated members who prefer not to be publicly listed', role: 'Member', interest: 'Various' }
+    { name: 'And many other dedicated members who prefer not to be publicly listed' }
   ];
   
   function renderMembers(members) {

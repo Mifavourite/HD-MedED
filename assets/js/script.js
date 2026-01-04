@@ -13,18 +13,12 @@ const qsa = s => Array.from(document.querySelectorAll(s));
   if (!form) return;
 
   const profileKey = 'hd-profile';
-  const meetKey = 'hd-meet-count';
   const notifyKey = 'hd-notifs';
 
   const nameEl = qs('#dashName');
   const emailEl = qs('#dashEmail');
   const interestEl = qs('#dashInterest');
 
-  const meetCountEl = qs('#meetCount');
-  const statusEl = qs('#membershipStatus');
-
-  const addBtn = qs('#addMeeting');
-  const resetBtn = qs('#resetMeet');
   const logoutBtn = qs('#logoutBtn');
 
   const notifsEl = qs('#notificationsList');
@@ -65,40 +59,11 @@ const qsa = s => Array.from(document.querySelectorAll(s));
       .join('');
   }
 
-  /* ---------- Attendance ---------- */
-  function updateMembershipStatus(count) {
-    if (!statusEl) return;
-    statusEl.textContent =
-      count >= 5
-        ? 'Congratulations — you qualify for formal membership!'
-        : `You need ${5 - count} more meeting(s) to qualify.`;
-  }
-
-  function loadMeetCount() {
-    const count = Number(localStorage.getItem(meetKey) || 0);
-    if (meetCountEl) meetCountEl.textContent = String(count);
-    updateMembershipStatus(count);
-  }
-
   /* ---------- Events ---------- */
   form.onsubmit = saveProfile;
 
-  addBtn && addBtn.addEventListener('click', () => {
-    const count = Number(localStorage.getItem(meetKey) || 0) + 1;
-    localStorage.setItem(meetKey, count);
-    loadMeetCount();
-    addNotification('Attendance marked');
-  });
-
-  resetBtn && resetBtn.addEventListener('click', () => {
-    localStorage.setItem(meetKey, 0);
-    loadMeetCount();
-    addNotification('Attendance reset');
-  });
-
   logoutBtn && logoutBtn.addEventListener('click', () => {
     localStorage.removeItem(profileKey);
-    localStorage.removeItem(meetKey);
     localStorage.removeItem(notifyKey);
     alert('Logged out (demo)');
     location.href = 'index.html';
@@ -106,7 +71,6 @@ const qsa = s => Array.from(document.querySelectorAll(s));
 
   /* ---------- Init ---------- */
   loadProfile();
-  loadMeetCount();
   renderNotifications();
 })();
 
@@ -162,15 +126,11 @@ const qsa = s => Array.from(document.querySelectorAll(s));
   const founderTimelineEl = qs('#founderTimeline');
   
   const timelineData = [
-    { year: '2017', event: 'Helpers Dynasty founded on February 24' },
-    { year: '2018', event: 'First study sessions and mentorship programs launched' },
-    { year: '2019', event: 'Community expansion and outreach initiatives begin' },
-    { year: '2020', event: 'Virtual study sessions established during pandemic' },
-    { year: '2021', event: 'Research collaboration programs introduced' },
-    { year: '2022', event: 'Global membership growth and leadership development' },
-    { year: '2023', event: 'Enhanced mentorship and professional development' },
-    { year: '2024', event: 'Continued community growth and impact' },
-    { year: '2025', event: 'Ongoing commitment to healthcare excellence' }
+    { year: '2017', event: 'Helpers Dynasty founded on February 24 with Helpers Dynasty SKN Chapter as the pioneer chapter' },
+    { year: '2018', event: 'Helpers Dynasty Guyana Chapter and youth mentorship programs launched' },
+    { year: '2019', event: 'Community expansion and Helpers Dynasty ABSU Chapter launched' },
+    { year: '2020', event: 'Operational Pause'},
+    { year: '2025', event: 'Resumed activities with a commitment to health education excellence' }
   ];
   
   function renderTimeline(container, data) {

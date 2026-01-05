@@ -154,15 +154,6 @@ const qsa = s => Array.from(document.querySelectorAll(s));
   const membersList = qs('#membersList');
   if (!searchInput || !membersList) return;
   
-  const membersData = [
-    { name: 'Lordsfavour Anukam', role: 'Founder', interest: 'Digital Health' },
-    { name: 'Samuel Anukam', role: 'Youth Leader', interest: 'Youth Mentorship' },
-    { name: 'Emmanuel Peculiar', role: 'Social Media Manager', interest: 'Social Media' },
-    { name: 'Blessing Ndubueze', role: 'Public Health Advocate', interest: 'Health Education' },
-    { name: 'Alice', role: 'Welfare Director', interest: 'Community Care' },
-    { name: 'Esther Ikechukwu', role: 'Member', interest: 'Community Service' },
-    { name: 'And many other dedicated members who prefer not to be publicly listed' }
-  ];
   
   function renderMembers(members) {
     membersList.innerHTML = members.map(m => `

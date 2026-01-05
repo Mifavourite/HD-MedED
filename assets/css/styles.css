@@ -141,6 +141,27 @@ body.dark .card{background:#071229}
 body.dark .stat{background:linear-gradient(180deg,rgba(212,175,55,.03),#071229)}
 body.dark .brand-name{color:#a9d1ff}
 
+.Leaders {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.Leaders .avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--blue));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+
+
 /* Responsive */
 @media (max-width:900px){
   .nav-menu{

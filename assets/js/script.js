@@ -126,7 +126,11 @@ const qsa = s => Array.from(document.querySelectorAll(s));
   const founderTimelineEl = qs('#founderTimeline');
   
   const timelineData = [
-    { year: 'November 2025', event: 'Helpers Dynasty established with Helpers Dynasty International and Helpers Dynasty Hope as two interconnected subgroups' },
+    { year: '2017', event: 'Helpers Dynasty founded on February 24 with Helpers Dynasty SKN Chapter as the pioneer chapter' },
+    { year: '2018', event: 'Helpers Dynasty Guyana Chapter and youth mentorship programs launched' },
+    { year: '2019', event: 'Community expansion and Helpers Dynasty ABSU Chapter launched' },
+    { year: '2020', event: 'Operational Pause'},
+    { year: 'November 2025', event: 'Helpers Dynasty revitalized with renewed commitment to health education excellence. Reorganized into two interconnected subgroups: Helpers Dynasty International and Helpers Dynasty Hope' },
     { year: '2025', event: 'Launch of Study With Me live sessions, mentorship programs, and monthly health conferences' }
   ];
   

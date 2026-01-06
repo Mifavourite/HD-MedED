@@ -294,4 +294,3 @@ body.dark .contact-link:hover{color:var(--gold)}
   .hero{grid-template-columns:1fr;gap:18px}
   .grid-3{grid-template-columns:repeat(auto-fill,minmax(180px,1fr))}
   .carousel-item img{max-width:320px}
-}

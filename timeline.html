@@ -6,8 +6,8 @@
 
   <title>Timeline — Helpers Dynasty</title>
   <meta name="description"
-        content="Explore the history and milestones of Helpers Dynasty from its founding in 2017 to its rejuvenation in 2025." />
-
+        content="Explore the history and milestones of Helpers Dynasty from its founding to its continued growth in 2026." />
+  <link rel="icon" type="image/jpeg" href="ok.jpg" id="favicon">
   <!-- Styles -->
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
@@ -21,11 +21,32 @@
         <div class="brand-name">Helpers Dynasty</div>
       </div>
     </a>
+    <div class="header-actions">
+      <button id="themeToggle" class="theme-btn">Theme</button>
+      <a href="login.html" class="btn btn-ghost">Member Login</a>
+      <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
   </header>
+
+  <nav class="nav container" aria-label="Main nav">
+    <ul class="nav-menu">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="founders.html">Leaders</a></li>
+      <li><a href="timeline.html">Timeline</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="blog.html">Monthly Unifier</a></li>
+      <li><a href="game.html">Medical Game</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
 
   <!-- ================= MAIN ================= -->
   <main class="container section fade">
-    <h2>Helpers Dynasty Timeline (2017 — 2025)</h2>
+    <h2>Helpers Dynasty Timeline</h2>
     <p class="muted">
       A chronological overview of the milestones, expansions, and achievements of Helpers Dynasty.
     </p>
@@ -37,6 +58,15 @@
       aria-label="Helpers Dynasty historical timeline">
     </div>
   </main>
+
+  <button id="backToTop" class="back-to-top">↑</button>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="thisYear"></span> Helpers Dynasty. All rights reserved.</p>
+      <p><a href="contact.html">Contact Us</a></p>
+    </div>
+  </footer>
 
   <!-- ================= SCRIPTS ================= -->
   <script src="assets/js/script.js" defer></script>

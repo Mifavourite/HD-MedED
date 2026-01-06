@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Member Login — Helpers Dynasty</title>
+  <link rel="icon" type="image/jpeg" href="ok.jpg" id="favicon">
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body class="auth-page">
@@ -14,19 +15,45 @@
       </div>
       <span class="auth-brand-name">Helpers Dynasty</span>
     </a>
-    <h2>Member Login</h2>
-    <form id="loginPageForm" class="card">
-      <label>Email or Username<input id="loginEmail" type="text" required /></label>
-      <label>Password<input id="loginPass" type="password" required /></label>
-      <label class="small"><input id="rememberMe" type="checkbox"> Remember me</label>
-      <div class="form-actions">
-        <button type="submit" class="btn btn-primary">Sign In</button>
-        <a href="#" class="btn btn-ghost">Forgot password?</a>
-      </div>
-    </form>
-    <p class="muted"></p>
+    
+    <!-- Tab Switcher -->
+    <div class="auth-tabs">
+      <button class="auth-tab active" data-tab="login">Login</button>
+      <button class="auth-tab" data-tab="signup">Create Account</button>
+    </div>
+
+    <!-- Login Form -->
+    <div id="loginTab" class="auth-tab-content active">
+      <h2>Member Login</h2>
+      <form id="loginPageForm" class="card">
+        <label>Email or Username<input id="loginEmail" type="text" required /></label>
+        <label>Password<input id="loginPass" type="password" required /></label>
+        <label class="small"><input id="rememberMe" type="checkbox"> Remember me</label>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Sign In</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Create Account Form -->
+    <div id="signupTab" class="auth-tab-content">
+      <h2>Create Account</h2>
+      <form id="signupPageForm" class="card">
+        <label>Full Name<input id="signupName" type="text" required /></label>
+        <label>Email<input id="signupEmail" type="email" required /></label>
+        <label>Username<input id="signupUsername" type="text" required /></label>
+        <label>Password<input id="signupPass" type="password" required minlength="6" /></label>
+        <label>Confirm Password<input id="signupPassConfirm" type="password" required /></label>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Create Account</button>
+        </div>
+      </form>
+    </div>
+
+    <p class="auth-message muted" id="authMessage"></p>
   </main>
 
   <script src="assets/js/script.js" defer></script>
+  <script src="assets/js/auth.js" defer></script>
 </body>
 </html>

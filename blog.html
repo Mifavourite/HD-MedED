@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Monthly Unifier — Helpers Dynasty</title>
+  <link rel="icon" type="image/jpeg" href="ok.jpg" id="favicon">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="assets/js/script.js" defer></script>
+  <meta name="description" content="Monthly Unifier — community updates, stories, and insights from Helpers Dynasty." />
+</head>
+<body>
+  <header class="site-header container">
+    <a class="brand" href="index.html">
+      <img src="ok.jpg" alt="HD logo" class="logo">
+      <div class="brand-text">
+        <div class="brand-name">Helpers Dynasty (HD)</div>
+        <div class="brand-sub">Unity in Service · Fellowship</div>
+      </div>
+    </a>
+
+    <div class="header-actions">
+      <button id="themeToggle" class="theme-btn">Theme</button>
+      <a href="login.html" class="btn btn-ghost">Member Login</a>
+      <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="nav container" aria-label="Main nav">
+    <ul class="nav-menu">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="founders.html">Leaders</a></li>
+      <li><a href="timeline.html">Timeline</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="blog.html">Monthly Unifier</a></li>
+      <li><a href="game.html">Medical Game</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section class="container section fade">
+      <h2>Monthly Unifier</h2>
+      <p class="muted">Community updates, stories, and insights from Helpers Dynasty.</p>
+      <!-- This is where JS will render posts -->
+      <div class="blog-list"></div>
+    </section>
+  </main>
+
+  <button id="backToTop" class="back-to-top">↑</button>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="thisYear"></span> Helpers Dynasty. All rights reserved.</p>
+      <p><a href="contact.html">Contact Us</a></p>
+    </div>
+  </footer>
+
+  <script src="assets/js/blog-data.js"></script>
+  <script src="assets/js/blog.js"></script>
+</body>
+</html>

@@ -180,7 +180,7 @@ const BLOG_POSTS = [
       <p>The nurse evaluates vital signs, sleep patterns, and daily routines, provides education on healthy sleep hygiene, balanced nutrition, and time management, and reinforces adherence to the care plan. The nurse also offers reassurance and encourages help-seeking behavior.</p>
 
       <h4>3. Medical Student</h4>
-      <p>Under supervision, the medical student takes a detailed psychosocial history, assists in screening assessments, and participates in patient education. The student learns the importance of early intervention, youth mental health awareness, and holistic care.</p>
+      <p>Under supervision, the medical student takes a detailed psychosocial history, assists in screening assessments, and participates in patient education. The student learns the importance of early intervention, mental health awareness, and holistic care.</p>
 
       <h4>4. Medical Laboratory Scientist</h4>
       <p>The laboratory scientist conducts relevant tests to rule out physical contributors to fatigue, such as anemia or metabolic imbalances. Results are reported promptly to guide clinical decision-making.</p>
@@ -204,7 +204,7 @@ const BLOG_POSTS = [
 
       <h3>Unified Message</h3>
       <p><strong>A strong year begins with healthy minds and balanced lives. Early support prevents long-term harm.</strong><br>
-      When youths are supported holistically—academically, emotionally, and socially—the future is strengthened, and the mission of Helpers Dynasty is advanced.</p>
+      When individuals are supported holistically—academically, emotionally, and socially—the future is strengthened, and the mission of Helpers Dynasty is advanced through comprehensive health education and care.</p>
     `
   }
 ];

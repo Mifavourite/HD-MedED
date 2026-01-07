@@ -150,42 +150,6 @@ const qsa = s => Array.from(document.querySelectorAll(s));
 })();
 
 /* =========================
-   Members Directory
-========================= */
-(function membersModule() {
-  const searchInput = qs('#memberSearch');
-  const membersList = qs('#membersList');
-  if (!searchInput || !membersList) return;
-  
-  
-  function renderMembers(members) {
-    membersList.innerHTML = members.map(m => `
-      <div class="card member-card">
-        <h3>${m.name}</h3>
-        <p class="muted">${m.role}</p>
-        <p>${m.interest}</p>
-      </div>
-    `).join('');
-  }
-  
-  function filterMembers(query) {
-    const lowerQuery = query.toLowerCase();
-    const filtered = membersData.filter(m => 
-      m.name.toLowerCase().includes(lowerQuery) ||
-      m.role.toLowerCase().includes(lowerQuery) ||
-      m.interest.toLowerCase().includes(lowerQuery)
-    );
-    renderMembers(filtered);
-  }
-  
-  searchInput.addEventListener('input', (e) => {
-    filterMembers(e.target.value);
-  });
-  
-  renderMembers(membersData);
-})();
-
-/* =========================
    Events
 ========================= */
 (function eventsModule() {

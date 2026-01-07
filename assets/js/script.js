@@ -162,9 +162,9 @@ const qsa = s => Array.from(document.querySelectorAll(s));
   // Default events
   const defaultEvents = [
     {
-      id: 'hd-intl-na-hangout-2026-01',
-      title: 'HD International NA Monthly Hangout',
-      date: '2026-01-10',
+      id: 'hd-hope-hangout-2026-01',
+      title: 'HD Hope Monthly Hangout',
+      date: '2026-01-24',
       time: '19:00',
       isDefault: true
     },
@@ -176,12 +176,12 @@ const qsa = s => Array.from(document.querySelectorAll(s));
       isDefault: true
     },
     {
-      id: 'hd-hope-hangout-2026-01',
-      title: 'HD Hope Monthly Hangout',
-      date: '2026-01-24',
+      id: 'hd-intl-na-hangout-2026-01',
+      title: 'HD International NA Monthly Hangout',
+      date: '2026-01-10',
       time: '19:00',
       isDefault: true
-    }
+    },
   ];
   
   function loadEvents() {

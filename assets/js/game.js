@@ -1,29 +1,34 @@
 /* =========================
    Medical Terminology Game Logic
 ========================= */
-// assets/js/medical-terms.js
+
+// Use the qs and qsa already defined in script.js — DO NOT redefine them here
+// const qs = s => document.querySelector(s);
+// const qsa = s => Array.from(document.querySelectorAll(s));
+
+// Medical Terms Database
 const MedicalTermsDB = {
   easy: [
     { term: "Cardiology", meaning: "Study of the heart", root: "cardi/o", explanation: "The prefix 'cardi/o' means heart." },
     { term: "Dermatology", meaning: "Study of the skin", root: "derm/o", explanation: "The prefix 'derm/o' means skin." },
     { term: "Osteopathy", meaning: "Treatment of bone disorders", root: "oste/o", explanation: "'Oste/o' refers to bone." },
-    // Add more easy terms here
   ],
   medium: [
     { term: "Nephrology", meaning: "Study of the kidneys", root: "nephr/o", explanation: "'Nephr/o' means kidney." },
     { term: "Hepatitis", meaning: "Inflammation of the liver", root: "hepat/o", explanation: "'Hepat/o' refers to liver." },
     { term: "Arthritis", meaning: "Inflammation of joints", root: "arthr/o", explanation: "'Arthr/o' means joint." },
-    // Add more
   ],
   hard: [
     { term: "Myocarditis", meaning: "Inflammation of the heart muscle", root: "my/o + cardi/o", explanation: "Combines 'my/o' (muscle) and 'cardi/o' (heart)." },
     { term: "Encephalopathy", meaning: "Disease of the brain", root: "encephal/o", explanation: "'Encephal/o' means brain." },
     { term: "Cholecystitis", meaning: "Inflammation of the gallbladder", root: "cholecyst/o", explanation: "'Cholecyst/o' refers to gallbladder." },
-    // Add more challenging ones
   ],
 
+  // ← FIXED: Added missing comma after the hard array
   generateQuestion(difficulty = 'medium') {
     const pool = this[difficulty] || this.medium;
+    if (pool.length === 0) return null;
+
     const item = pool[Math.floor(Math.random() * pool.length)];
 
     // Generate 3 wrong answers from other terms in the same difficulty
@@ -33,7 +38,7 @@ const MedicalTermsDB = {
       .slice(0, 3)
       .map(t => t.meaning);
 
-    // Combine and shuffle answers
+    // Combine correct + wrong, then shuffle
     const answers = [item.meaning, ...wrongOptions].sort(() => 0.5 - Math.random());
     const correctIndex = answers.indexOf(item.meaning);
 
@@ -48,17 +53,17 @@ const MedicalTermsDB = {
   }
 };
 
-// Make it globally available
+// Make it globally available (safe even if already exists)
 window.MedicalTermsDB = MedicalTermsDB;
+
 (function gameModule() {
   let score = 0;
   let correct = 0;
   let streak = 0;
   let totalQuestions = 0;
   let currentQuestion = null;
-  let selectedAnswer = null;
-  
-  // DOM elements
+
+  // DOM elements — using qs/qsa from script.js
   const scoreEl = qs('#score');
   const correctEl = qs('#correct');
   const streakEl = qs('#streak');
@@ -74,73 +79,68 @@ window.MedicalTermsDB = MedicalTermsDB;
   const explanationText = qs('#explanationText');
   const explanationDetails = qs('#explanationDetails');
   const showExplanations = qs('#showExplanations');
-  const randomizeOrder = qs('#randomizeOrder');
   const difficultySelect = qs('#difficulty');
-  
-  // Initialize game
+
   function init() {
     loadQuestion();
     updateStats();
-    
-    // Answer button handlers
+
+    // Answer clicks
     answerBtns.forEach(btn => {
       btn.addEventListener('click', () => handleAnswerClick(btn));
     });
-    
-    // Next button handler
+
+    // Next question
     nextBtn.addEventListener('click', () => {
       loadQuestion();
       resetQuestionState();
     });
-    
-    // Hint button handler
+
+    // Hint
     hintBtn.addEventListener('click', () => {
-      if (currentQuestion && currentQuestion.term) {
-        questionHintEl.textContent = `Hint: The term "${currentQuestion.term}" contains the root word related to "${currentQuestion.meaning.split(' ')[0]}".`;
+      if (currentQuestion) {
+        questionHintEl.textContent = `Hint: The root relates to something about "${currentQuestion.meaning.split(' ').slice(0, 2).join(' ')}..."`;
         questionHintEl.style.display = 'block';
       }
     });
   }
-  
-  // Load a new question
+
   function loadQuestion() {
     const difficulty = difficultySelect.value;
     currentQuestion = MedicalTermsDB.generateQuestion(difficulty);
-    totalQuestions++;
     
+    if (!currentQuestion) {
+      questionTextEl.textContent = "No questions available for this difficulty.";
+      return;
+    }
+
+    totalQuestions++;
     questionNumEl.textContent = totalQuestions;
     questionTextEl.textContent = currentQuestion.question;
     questionHintEl.textContent = '';
     questionHintEl.style.display = 'none';
-    
-    // Update answer buttons
+
+    // Populate answers
     answerBtns.forEach((btn, index) => {
-      btn.textContent = currentQuestion.answers[index];
+      btn.textContent = currentQuestion.answers[index] || '—';
       btn.disabled = false;
       btn.classList.remove('correct', 'incorrect', 'selected');
     });
-    
+
     nextBtn.style.display = 'none';
     explanationCard.style.display = 'none';
-    selectedAnswer = null;
   }
-  
-  // Handle answer click
+
   function handleAnswerClick(btn) {
     if (btn.disabled) return;
-    
+
     const answerIndex = parseInt(btn.dataset.answer);
-    selectedAnswer = answerIndex;
-    
+    const isCorrect = answerIndex === currentQuestion.correctIndex;
+
     // Disable all buttons
     answerBtns.forEach(b => b.disabled = true);
-    
-    // Mark selected answer
     btn.classList.add('selected');
-    
-    // Check if correct
-    const isCorrect = answerIndex === currentQuestion.correctIndex;
-    
+
     if (isCorrect) {
       btn.classList.add('correct');
       score += 10 + (streak * 2);
@@ -149,50 +149,43 @@ window.MedicalTermsDB = MedicalTermsDB;
     } else {
       btn.classList.add('incorrect');
       streak = 0;
-      // Highlight correct answer
       answerBtns[currentQuestion.correctIndex].classList.add('correct');
     }
-    
+
     updateStats();
-    
-    // Show explanation
+
     if (showExplanations.checked) {
       showExplanation();
     }
-    
+
     nextBtn.style.display = 'block';
   }
-  
-  // Show explanation
+
   function showExplanation() {
-    explanationText.innerHTML = currentQuestion.explanation;
+    explanationText.textContent = currentQuestion.explanation;
     explanationDetails.innerHTML = `
       <strong>Term:</strong> ${currentQuestion.term}<br>
       <strong>Meaning:</strong> ${currentQuestion.meaning}
     `;
     explanationCard.style.display = 'block';
   }
-  
-  // Reset question state
+
   function resetQuestionState() {
     answerBtns.forEach(btn => {
       btn.disabled = false;
       btn.classList.remove('correct', 'incorrect', 'selected');
     });
-    nextBtn.style.display = 'none';
-    explanationCard.style.display = 'none';
-    selectedAnswer = null;
+    questionHintEl.style.display = 'none';
   }
-  
-  // Update statistics
+
   function updateStats() {
     scoreEl.textContent = score;
     correctEl.textContent = correct;
     streakEl.textContent = streak;
     totalQuestionsEl.textContent = totalQuestions;
   }
-  
-  // Initialize on load
+
+  // Start the game when DOM is ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {

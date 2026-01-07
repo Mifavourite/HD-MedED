@@ -1,8 +1,6 @@
 /* =========================
    Medical Terminology Game Logic
 ========================= */
-const qs = s => document.querySelector(s);
-const qsa = s => Array.from(document.querySelectorAll(s));
 // assets/js/medical-terms.js
 const MedicalTermsDB = {
   easy: [

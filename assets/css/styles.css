@@ -133,7 +133,7 @@ body{
   min-height:500px;
   background-image:url('../images/use.png');
   background-size:cover;
-  background-position:center;
+ background-position: center 30%; /* move image down */
   background-repeat:no-repeat;
   background-attachment: fixed;
   border-radius:20px;

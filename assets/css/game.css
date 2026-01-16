@@ -277,21 +277,113 @@ body.dark .question-hint {
   background: rgba(11, 61, 145, .2);
 }
 
+
+
 /* Responsive */
-@media (max-width: 768px) {
-  .game-header h1 {
-    font-size: 2rem;
+@media (max-width:900px){
+  .nav-menu{
+    position:fixed;
+    top:80px;
+    left:-100%;
+    width:100%;
+    background:var(--white);
+    flex-direction:column;
+    padding:20px;
+    box-shadow:0 10px 30px rgba(11,61,145,.1);
+    transition:left .3s ease;
+    z-index:100
   }
-  
-  .question-text {
-    font-size: 1.4rem;
+  .nav-menu.active{left:0}
+  .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+  .hamburger.active span:nth-child(2){opacity:0}
+  .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(7px,-6px)}
+  .hero{grid-template-columns:1fr;gap:18px}
+  .grid-3{grid-template-columns:repeat(auto-fill,minmax(180px,1fr))}
+  .carousel-item img{max-width:320px}
+   /* =========================
+   VISUAL CENTRALIZATION POLISH
+   ========================= */
+
+/* Limit hero width on large screens */
+.hero {
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Prevent hero text from stretching too wide */
+.hero-left {
+  max-width: 560px;
+}
+
+/* Center CTA visually without killing layout */
+.hero-cta {
+  flex-wrap: wrap;
+}
+
+/* Constrain long text blocks */
+.section p,
+.section ul {
+  max-width: 760px;
+}
+
+/* Center section content */
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Keep cards full width inside sections */
+.section .card,
+.section .grid-2,
+.section .grid-3,
+.section .founders-grid {
+  width: 100%;
+}
+
+/* Improve vertical rhythm */
+.section {
+  margin: 72px 0;
+}
+/* =========================
+   FLOATING MEDICAL ICONS
+   ========================= */
+
+.medical-icons-layer {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 35%;
+  height: 100vh;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* Individual icon */
+.medical-icon {
+  position: absolute;
+  bottom: -40px;
+  font-size: 26px;
+  opacity: 0;
+  animation: riseIcon linear infinite;
+}
+
+/* Rising animation */
+@keyframes riseIcon {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
   }
-  
-  .answers-section {
-    grid-template-columns: 1fr;
+  10% {
+    opacity: 0.4;
   }
-  
-  .stat-value {
-    font-size: 1.5rem;
+  90% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(-110vh);
+    opacity: 0;
   }
 }

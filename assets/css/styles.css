@@ -115,66 +115,66 @@ body{
   width: calc(100% - 28px);
 }
 
-/* Hero - centered and elegant */
+/* Hero - centered with background image */
 .hero{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  align-items:center;
-  gap:48px;
-  text-align:left;
-  padding:64px 0;
-  max-width:1100px;
-  margin:0 auto;
-}
-.hero-left{
-  width:100%;
-}
-.hero-image{
-  width:100%;
+  position:relative;
   display:flex;
-  justify-content:center;
   align-items:center;
-}
-.hero-img{
-  width:100%;
-  max-width:500px;
-  height:400px;
-  object-fit:cover;
+  justify-content:center;
+  text-align:center;
+  padding:120px 24px;
+  max-width:1200px;
+  margin:0 auto;
+  min-height:500px;
+  background-image:url('../images/use.png');
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
   border-radius:20px;
-  box-shadow:0 20px 60px rgba(11,61,145,.15);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow:hidden;
 }
-.hero-img:hover{
-  transform:translateY(-4px);
-  box-shadow:0 24px 80px rgba(11,61,145,.2);
+.hero::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,0.85));
+  z-index:1;
 }
-@media (max-width:900px){
-  .hero{
-    grid-template-columns:1fr;
-    text-align:center;
-    gap:32px;
-  }
-  .hero-img{
-    max-width:100%;
-    height:300px;
-  }
+.hero-centered{
+  position:relative;
+  z-index:2;
+  width:100%;
 }
-.hero-left h1{
-  font-size:3rem;
+.hero-centered h1{
+  font-size:4rem;
   color:var(--blue);
-  margin-bottom:16px;
+  margin-bottom:20px;
   font-weight:800;
   letter-spacing:-1px;
   line-height:1.2;
+  text-shadow:0 2px 8px rgba(255,255,255,0.8);
 }
 .lead{
   color:var(--muted);
   margin-bottom:24px;
-  font-size:1.125rem;
+  font-size:1.25rem;
   line-height:1.7;
-  max-width:600px;
+  max-width:700px;
   margin-left:auto;
   margin-right:auto;
+  font-weight:500;
+}
+@media (max-width:900px){
+  .hero{
+    min-height:400px;
+    padding:80px 20px;
+  }
+  .hero-centered h1{
+    font-size:2.5rem;
+  }
+  .lead{
+    font-size:1.1rem;
+  }
 }
 .hero-cta{
   display:flex;
@@ -591,18 +591,6 @@ body.dark .contact-link:hover{color:var(--gold)}
   gap: 16px;
 }
 
-.ai-avatar {
-  width: 56px;
-  height: 56px;
-  background: rgba(255,255,255,.2);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-  border: 2px solid rgba(255,255,255,.3);
-}
-
 .ai-header-content h3 {
   margin: 0 0 4px 0;
   font-size: 1.5rem;
@@ -629,6 +617,15 @@ body.dark .contact-link:hover{color:var(--gold)}
   display: flex;
   gap: 12px;
   animation: fadeInMessage 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-bottom: 20px;
+}
+
+.ai-message.ai-user {
+  justify-content: flex-end;
+}
+
+.ai-message.ai-assistant {
+  justify-content: flex-start;
 }
 
 @keyframes fadeInMessage {
@@ -642,24 +639,8 @@ body.dark .contact-link:hover{color:var(--gold)}
   }
 }
 
-.message-avatar {
-  width: 36px;
-  height: 36px;
-  background: linear-gradient(135deg, var(--gold), var(--blue));
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  flex-shrink: 0;
-}
-
-.ai-message.ai-user .message-avatar {
-  background: var(--muted);
-}
-
 .message-content {
-  flex: 1;
+  max-width: 75%;
   background: var(--white);
   padding: 16px 20px;
   border-radius: 16px;
@@ -668,8 +649,15 @@ body.dark .contact-link:hover{color:var(--gold)}
 }
 
 .ai-message.ai-user .message-content {
-  background: linear-gradient(135deg, var(--gold), #f0c850);
+  background: #0b3d91;
+  color: var(--white);
+  border-radius: 16px 16px 4px 16px;
+}
+
+.ai-message.ai-assistant .message-content {
+  background: #f0f0f0;
   color: var(--black);
+  border-radius: 16px 16px 16px 4px;
 }
 
 .message-content p {
@@ -831,11 +819,14 @@ body.dark .ai-chat-input-container {
   
   .ai-chat-input-container {
     padding: 16px 20px;
-    flex-direction: column;
+    flex-direction: row;
+  }
+  
+  .message-content {
+    max-width: 85%;
   }
   
   .ai-send-btn {
-    width: 100%;
-    justify-content: center;
+    min-width: 80px;
   }
 }

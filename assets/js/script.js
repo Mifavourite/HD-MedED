@@ -266,33 +266,38 @@ const qsa = s => Array.from(document.querySelectorAll(s));
   
   fadeElements.forEach(el => observer.observe(el));
 })();
-<script>
-const icons = ["🩺", "⚕️", "💊", "🏥", "🧬", "🫀"];
 
-const container = document.querySelector(".medical-icons-layer");
+/* =========================
+   Medical Icons Animation
+========================= */
+(function medicalIconsModule() {
+  const container = document.querySelector(".medical-icons-layer");
+  if (!container) return;
+  
+  const icons = ["🩺", "⚕️", "💊", "🏥", "🧬", "🫀"];
 
-function createMedicalIcon() {
-  const icon = document.createElement("div");
-  icon.classList.add("medical-icon");
-  icon.textContent = icons[Math.floor(Math.random() * icons.length)];
+  function createMedicalIcon() {
+    const icon = document.createElement("div");
+    icon.classList.add("medical-icon");
+    icon.textContent = icons[Math.floor(Math.random() * icons.length)];
 
-  // Random horizontal position (right side only)
-  icon.style.right = Math.random() * 80 + "px";
+    // Random horizontal position (right side only)
+    icon.style.right = Math.random() * 80 + "px";
 
-  // Random size
-  icon.style.fontSize = Math.random() * 14 + 18 + "px";
+    // Random size
+    icon.style.fontSize = Math.random() * 14 + 18 + "px";
 
-  // Random animation duration
-  icon.style.animationDuration = Math.random() * 8 + 8 + "s";
+    // Random animation duration
+    icon.style.animationDuration = Math.random() * 8 + 8 + "s";
 
-  container.appendChild(icon);
+    container.appendChild(icon);
 
-  // Remove after animation
-  setTimeout(() => {
-    icon.remove();
-  }, 16000);
-}
+    // Remove after animation
+    setTimeout(() => {
+      icon.remove();
+    }, 16000);
+  }
 
-// Create icons repeatedly
-setInterval(createMedicalIcon, 900);
-</script>
+  // Create icons repeatedly
+  setInterval(createMedicalIcon, 900);
+})();

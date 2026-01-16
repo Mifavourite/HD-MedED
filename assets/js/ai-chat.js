@@ -98,7 +98,6 @@ function initAIChat() {
     typingDiv.className = 'ai-message ai-assistant';
     typingDiv.id = 'typingIndicator';
     typingDiv.innerHTML = `
-      <div class="message-avatar">🤖</div>
       <div class="message-content">
         <div class="ai-typing-indicator">
           <div class="ai-typing-dot"></div>
@@ -124,11 +123,9 @@ function initAIChat() {
     const messageDiv = document.createElement('div');
     messageDiv.className = `ai-message ${isUser ? 'ai-user' : 'ai-assistant'}`;
     
-    const avatar = isUser ? '👤' : '🤖';
     const content = text.split('\n').map(para => `<p>${escapeHTML(para)}</p>`).join('');
     
     messageDiv.innerHTML = `
-      <div class="message-avatar">${avatar}</div>
       <div class="message-content">${content}</div>
     `;
     
@@ -178,3 +175,12 @@ function initAIChat() {
     chatInput.style.height = Math.min(chatInput.scrollHeight, 150) + 'px';
   });
 })();
+  } // End of initAIChat
+}
+
+// Initialize AI chat when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initAIChat);
+} else {
+  initAIChat();
+}

@@ -121,35 +121,6 @@ const qsa = s => Array.from(document.querySelectorAll(s));
 })();
 
 /* =========================
-   Timeline
-========================= */
-(function timelineModule() {
-  const timelineEl = qs('#timeline');
-  const founderTimelineEl = qs('#founderTimeline');
-  
-  const timelineData = [
-    { year: '2026', event: 'Helpers Dynasty continues its mission with renewed commitment to health education excellence' },
-    { year: '2018', event: 'Helpers Dynasty Guyana Chapter and health education programs launched' },
-    { year: '2019', event: 'Community expansion and Helpers Dynasty ABSU Chapter launched' },
-    { year: '2020', event: 'Operational Pause'},
-    { year: 'November 2025', event: 'Helpers Dynasty revitalized with renewed commitment to health education excellence. Reorganized into two interconnected subgroups: Helpers Dynasty International and Helpers Dynasty Hope' },
-    { year: '2025', event: 'Launch of Study With Me live sessions, mentorship programs, and monthly health conferences' }
-  ];
-  
-  function renderTimeline(container, data) {
-    if (!container) return;
-    container.innerHTML = data.map(item => `
-      <div class="timeline-item">
-        <strong>${item.year}</strong> — ${item.event}
-      </div>
-    `).join('');
-  }
-  
-  renderTimeline(timelineEl, timelineData);
-  renderTimeline(founderTimelineEl, timelineData.slice(0, 3));
-})();
-
-/* =========================
    Events
 ========================= */
 (function eventsModule() {
@@ -170,15 +141,8 @@ const qsa = s => Array.from(document.querySelectorAll(s));
     },
     {
       id: 'hd-intl-ng-hangout-2026-01',
-      title: 'HD International NG Monthly Hangout',
+      title: 'HD International Monthly Hangout',
       date: '2026-01-17',
-      time: '19:00',
-      isDefault: true
-    },
-    {
-      id: 'hd-intl-na-hangout-2026-01',
-      title: 'HD International NA Monthly Hangout',
-      date: '2026-01-10',
       time: '19:00',
       isDefault: true
     },

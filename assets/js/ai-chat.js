@@ -4,12 +4,20 @@
 const qs = s => document.querySelector(s);
 const qsa = s => Array.from(document.querySelectorAll(s));
 
-(function aiChatModule() {
+// Wait for DOM to be ready
+function initAIChat() {
   const messagesContainer = qs('#aiChatMessages');
   const chatInput = qs('#aiChatInput');
   const sendBtn = qs('#aiSendBtn');
   
-  if (!messagesContainer || !chatInput || !sendBtn) return;
+  if (!messagesContainer || !chatInput || !sendBtn) {
+    console.error('AI Chat: Required elements not found', { messagesContainer, chatInput, sendBtn });
+    return;
+  }
+  
+  console.log('AI Chat: Initializing...');
+  
+(function aiChatModule() {
 
   // Knowledge base for healthcare/medical questions
   const knowledgeBase = {

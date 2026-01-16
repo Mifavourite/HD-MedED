@@ -251,20 +251,69 @@ const qsa = s => Array.from(document.querySelectorAll(s));
 // Login functionality moved to auth.js
 
 /* =========================
-   Fade Animations
+   Fade Animations - Movie-like
 ========================= */
 (function fadeModule() {
-  const fadeElements = qsa('.fade');
+  const fadeElements = qsa('.fade, .section');
   
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+    entries.forEach((entry, index) => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, index * 100); // Staggered animation
       }
     });
-  }, { threshold: 0.1 });
+  }, { 
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  });
   
   fadeElements.forEach(el => observer.observe(el));
+})();
+
+/* =========================
+   Parallax Scroll Effects
+========================= */
+(function parallaxModule() {
+  const parallaxElements = qs('.hero');
+  if (!parallaxElements) return;
+  
+  window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const rate = scrolled * 0.5;
+    if (parallaxElements) {
+      parallaxElements.style.transform = `translateY(${rate}px)`;
+    }
+  }, { passive: true });
+})();
+
+/* =========================
+   Smooth Page Transitions
+========================= */
+(function smoothTransitionsModule() {
+  document.body.style.opacity = '0';
+  window.addEventListener('load', () => {
+    document.body.style.transition = 'opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+    document.body.style.opacity = '1';
+  });
+  
+  // Smooth transitions for links
+  qsa('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const href = this.getAttribute('href');
+      if (href !== '#' && href.startsWith('#')) {
+        e.preventDefault();
+        const target = qs(href);
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      }
+    });
+  });
 })();
 
 /* =========================

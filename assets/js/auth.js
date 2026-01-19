@@ -7,35 +7,41 @@ const qsa = s => Array.from(document.querySelectorAll(s));
 (function authModule() {
   'use strict';
 
-  // Wait for Security module to load
-  if (typeof window.Security === 'undefined') {
-    console.error('Security module not loaded');
-    return;
-  }
-
   const accountsKey = 'hd-accounts';
   const currentUserKey = 'hd-current-user';
   
-  // Tab switching
+  // Tab switching - This doesn't need Security module, so it runs first
   const tabs = qsa('.auth-tab');
   const tabContents = qsa('.auth-tab-content');
   const messageEl = qs('#authMessage');
   
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      const targetTab = tab.dataset.tab;
-      
-      // Update active states
-      tabs.forEach(t => t.classList.remove('active'));
-      tabContents.forEach(tc => tc.classList.remove('active'));
-      
-      tab.classList.add('active');
-      qs(`#${targetTab}Tab`).classList.add('active');
-      
-      // Clear messages
-      if (messageEl) messageEl.textContent = '';
+  if (tabs.length > 0 && tabContents.length > 0) {
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const targetTab = tab.dataset.tab;
+        
+        // Update active states
+        tabs.forEach(t => t.classList.remove('active'));
+        tabContents.forEach(tc => tc.classList.remove('active'));
+        
+        tab.classList.add('active');
+        const targetContent = qs(`#${targetTab}Tab`);
+        if (targetContent) {
+          targetContent.classList.add('active');
+        }
+        
+        // Clear messages
+        if (messageEl) messageEl.textContent = '';
+      });
     });
-  });
+  }
+
+  // Wait for Security module to load (only needed for authentication functions)
+  if (typeof window.Security === 'undefined') {
+    console.warn('Security module not loaded - authentication features will not work');
+    // Tab switching will still work above
+    return;
+  }
 
   // Get accounts from localStorage (with error handling)
   function getAccounts() {

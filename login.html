@@ -2,12 +2,46 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="X-Frame-Options" content="DENY" />
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
   <title>Member Login — Helpers Dynasty</title>
   <link rel="icon" type="image/jpeg" href="ok.jpg" id="favicon">
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body class="auth-page">
+  <header class="site-header container">
+    <a class="brand" href="index.html">
+      <img src="ok.jpg" alt="HD" class="logo" />
+      <div class="brand-text">
+        <div class="brand-name">Helpers Dynasty</div>
+      </div>
+    </a>
+    <div class="header-actions">
+      <button id="themeToggle" class="theme-btn">Theme</button>
+      <a href="index.html" class="btn btn-ghost">Home</a>
+      <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="nav container" aria-label="Main nav">
+    <ul class="nav-menu">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="blog.html">Monthly Unifier</a></li>
+      <li><a href="game.html">Medical Game</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
   <main class="auth-card">
     <a href="index.html" class="brand auth-brand">
       <div class="auth-logo-wrapper">
@@ -42,7 +76,7 @@
         <label>Full Name<input id="signupName" type="text" required /></label>
         <label>Email<input id="signupEmail" type="email" required /></label>
         <label>Username<input id="signupUsername" type="text" required /></label>
-        <label>Password<input id="signupPass" type="password" required minlength="6" /></label>
+        <label>Password<input id="signupPass" type="password" required minlength="8" placeholder="Min 8 chars, 1 uppercase, 1 number, 1 special char" /></label>
         <label>Confirm Password<input id="signupPassConfirm" type="password" required /></label>
         <div class="form-actions">
           <button type="submit" class="btn btn-primary">Create Account</button>
@@ -53,6 +87,14 @@
     <p class="auth-message muted" id="authMessage"></p>
   </main>
 
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="thisYear"></span> Helpers Dynasty. All rights reserved.</p>
+      <p><a href="contact.html">Contact Us</a></p>
+    </div>
+  </footer>
+
+  <script src="assets/js/security.js" defer></script>
   <script src="assets/js/script.js" defer></script>
   <script src="assets/js/auth.js" defer></script>
 </body>

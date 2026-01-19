@@ -3,6 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="X-Frame-Options" content="DENY" />
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
   <title>Member Dashboard — Helpers Dynasty</title>
   <link rel="icon" type="image/jpeg" href="ok.jpg" id="favicon">
   <link rel="stylesheet" href="assets/css/styles.css" />
@@ -14,11 +18,14 @@
       <img src="ok.jpg" alt="HD" class="logo" />
       <div class="brand-text">
         <div class="brand-name">Helpers Dynasty</div>
+        <div class="brand-sub" id="welcomeUser">Welcome back!</div>
       </div>
     </a>
     <div class="header-actions">
       <button id="themeToggle" class="theme-btn">Theme</button>
       <a href="index.html" class="btn btn-ghost">Home</a>
+      <a href="events.html" class="btn btn-ghost">Events</a>
+      <a href="blog.html" class="btn btn-ghost">Blog</a>
       <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
         <span></span>
         <span></span>
@@ -40,6 +47,31 @@
 
   <main class="container section fade">
     <h2>Your Dashboard</h2>
+
+    <!-- DASHBOARD STATS -->
+    <div class="dashboard-stats">
+      <div class="stat-card">
+        <div class="stat-icon">📅</div>
+        <div class="stat-content">
+          <div class="stat-value" id="attendanceCount">0</div>
+          <div class="stat-label">Events Attended</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">📚</div>
+        <div class="stat-content">
+          <div class="stat-value" id="coursesCompleted">0</div>
+          <div class="stat-label">Courses Completed</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🎯</div>
+        <div class="stat-content">
+          <div class="stat-value" id="studyStreak">0</div>
+          <div class="stat-label">Day Streak</div>
+        </div>
+      </div>
+    </div>
 
     <!-- PROFILE -->
     <section class="card profile-card">
@@ -63,12 +95,71 @@
       </form>
     </section>
 
+    <!-- ATTENDANCE TRACKING -->
+    <section class="card attendance-card">
+      <h3>📋 Event Attendance</h3>
+      <p class="muted">Mark your attendance for upcoming events and view your attendance history.</p>
+      
+      <div class="attendance-controls" style="margin: 20px 0;">
+        <button type="button" id="markAttendanceBtn" class="btn btn-primary">Mark Today's Attendance</button>
+        <button type="button" id="viewAttendanceHistoryBtn" class="btn btn-outline">View History</button>
+      </div>
+
+      <div id="attendanceDisplay" style="margin-top: 20px;">
+        <div id="todayAttendance" class="muted"></div>
+        <div id="attendanceHistory" style="margin-top: 20px; display: none;">
+          <h4>Attendance History</h4>
+          <ul id="attendanceHistoryList" class="muted"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CURATED COURSES -->
+    <section class="card courses-card">
+      <h3>📖 Free Curated Courses</h3>
+      <p class="muted">Explore our collection of free educational resources and courses to enhance your healthcare knowledge.</p>
+      
+      <div class="courses-grid" id="coursesGrid">
+        <!-- Courses will be populated by JavaScript -->
+      </div>
+    </section>
 
     <!-- GAME SECTION -->
     <section class="card game-card-link">
       <h3>Medical Terminology Game</h3>
       <p class="muted">Test your knowledge with our interactive medical terminology game featuring 200,000+ possible terms!</p>
       <a href="game.html" class="btn btn-primary" style="margin-top: 16px;">Play Game</a>
+    </section>
+
+    <!-- QUICK LINKS -->
+    <section class="card quick-links-card">
+      <h3>🚀 Quick Links</h3>
+      <div class="quick-links-grid">
+        <a href="events.html" class="quick-link">
+          <span class="quick-link-icon">📅</span>
+          <span class="quick-link-text">Upcoming Events</span>
+        </a>
+        <a href="blog.html" class="quick-link">
+          <span class="quick-link-icon">📝</span>
+          <span class="quick-link-text">Monthly Unifier</span>
+        </a>
+        <a href="team.html" class="quick-link">
+          <span class="quick-link-icon">👥</span>
+          <span class="quick-link-text">Our Team</span>
+        </a>
+        <a href="contact.html" class="quick-link">
+          <span class="quick-link-icon">📧</span>
+          <span class="quick-link-text">Contact Us</span>
+        </a>
+        <a href="game.html" class="quick-link">
+          <span class="quick-link-icon">🎮</span>
+          <span class="quick-link-text">Medical Game</span>
+        </a>
+        <a href="index.html#about" class="quick-link">
+          <span class="quick-link-icon">ℹ️</span>
+          <span class="quick-link-text">About Us</span>
+        </a>
+      </div>
     </section>
 
     <!-- NOTIFICATIONS -->
@@ -87,6 +178,8 @@
     </div>
   </footer>
 
+  <script src="assets/js/security.js" defer></script>
+  <script src="assets/js/auth.js" defer></script>
   <script src="assets/js/script.js" defer></script>
 </body>
 </html>

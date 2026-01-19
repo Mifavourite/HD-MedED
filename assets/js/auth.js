@@ -10,30 +10,60 @@ const qsa = s => Array.from(document.querySelectorAll(s));
   const accountsKey = 'hd-accounts';
   const currentUserKey = 'hd-current-user';
   
-  // Tab switching - This doesn't need Security module, so it runs first
-  const tabs = qsa('.auth-tab');
-  const tabContents = qsa('.auth-tab-content');
+  // Tab switching variables - make accessible to entire module
+  let tabs = null;
+  let tabContents = null;
   const messageEl = qs('#authMessage');
   
-  if (tabs.length > 0 && tabContents.length > 0) {
+  // Initialize tab switching - ensure DOM is ready
+  function initTabSwitching() {
+    tabs = qsa('.auth-tab');
+    tabContents = qsa('.auth-tab-content');
+    
+    if (!tabs || !tabContents || tabs.length === 0 || tabContents.length === 0) {
+      console.warn('Auth tabs or content not found');
+      return;
+    }
+    
     tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
+      tab.addEventListener('click', (e) => {
+        e.preventDefault();
         const targetTab = tab.dataset.tab;
+        
+        if (!targetTab) {
+          console.warn('Tab button missing data-tab attribute');
+          return;
+        }
         
         // Update active states
         tabs.forEach(t => t.classList.remove('active'));
         tabContents.forEach(tc => tc.classList.remove('active'));
         
+        // Activate clicked tab
         tab.classList.add('active');
+        
+        // Show corresponding content
         const targetContent = qs(`#${targetTab}Tab`);
         if (targetContent) {
           targetContent.classList.add('active');
+        } else {
+          console.warn(`Content element #${targetTab}Tab not found`);
         }
         
         // Clear messages
         if (messageEl) messageEl.textContent = '';
       });
     });
+    
+    console.log('Tab switching initialized', tabs.length, 'tabs found');
+  }
+  
+  // Run tab switching initialization when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTabSwitching);
+  } else {
+    // DOM already ready, run immediately
+    initTabSwitching();
   }
 
   // Wait for Security module to load (only needed for authentication functions)

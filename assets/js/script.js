@@ -14,33 +14,252 @@ const qsa = s => Array.from(document.querySelectorAll(s));
 
   const profileKey = 'hd-profile';
   const notifyKey = 'hd-notifs';
+  const attendanceKey = 'hd-attendance';
+  const studyStreakKey = 'hd-study-streak';
 
   const nameEl = qs('#dashName');
   const emailEl = qs('#dashEmail');
   const interestEl = qs('#dashInterest');
+  const welcomeEl = qs('#welcomeUser');
 
   const logoutBtn = qs('#logoutBtn');
-
   const notifsEl = qs('#notificationsList');
+  const markAttendanceBtn = qs('#markAttendanceBtn');
+  const viewHistoryBtn = qs('#viewAttendanceHistoryBtn');
 
-  /* ---------- Profile ---------- */
+  /* ---------- Profile (Sync with Login Data) ---------- */
   function loadProfile() {
-    const p = JSON.parse(localStorage.getItem(profileKey) || '{}');
-    if (nameEl && p.name) nameEl.value = p.name;
-    if (emailEl && p.email) emailEl.value = p.email;
-    if (interestEl && p.interest) interestEl.value = p.interest;
+    // First try to load from current user (login data)
+    const currentUser = JSON.parse(localStorage.getItem('hd-current-user') || '{}');
+    const savedProfile = JSON.parse(localStorage.getItem(profileKey) || '{}');
+    
+    // Merge login data with saved profile
+    const profile = {
+      name: currentUser.name || savedProfile.name || '',
+      email: currentUser.email || savedProfile.email || '',
+      interest: savedProfile.interest || ''
+    };
+
+    // Update form fields
+    if (nameEl) nameEl.value = profile.name;
+    if (emailEl) emailEl.value = profile.email;
+    if (interestEl && profile.interest) interestEl.value = profile.interest;
+
+    // Update welcome message
+    if (welcomeEl && profile.name) {
+      welcomeEl.textContent = `Welcome back, ${profile.name.split(' ')[0]}!`;
+    }
+
+    // Save merged profile
+    if (profile.name || profile.email) {
+      localStorage.setItem(profileKey, JSON.stringify(profile));
+    }
   }
 
   function saveProfile(e) {
     e.preventDefault();
+    // Sanitize inputs if Security module is available
+    const sanitize = typeof window.Security !== 'undefined' ? window.Security.sanitizeInput : (x) => x;
+    const escape = typeof window.Security !== 'undefined' ? window.Security.escapeHTML : (x) => x;
+    
     const profile = {
-      name: nameEl?.value.trim(),
-      email: emailEl?.value.trim(),
-      interest: interestEl?.value
+      name: escape(sanitize(nameEl?.value.trim() || '')),
+      email: sanitize(emailEl?.value.trim() || '').toLowerCase(),
+      interest: escape(interestEl?.value || '')
     };
     localStorage.setItem(profileKey, JSON.stringify(profile));
     addNotification('Profile saved');
-    alert('Profile saved locally.');
+    
+    // Update welcome message
+    if (welcomeEl && profile.name) {
+      welcomeEl.textContent = `Welcome back, ${profile.name.split(' ')[0]}!`;
+    }
+    
+    alert('Profile saved successfully.');
+  }
+
+  /* ---------- Attendance Tracking ---------- */
+  function loadAttendance() {
+    const attendance = JSON.parse(localStorage.getItem(attendanceKey) || '[]');
+    const today = new Date().toDateString();
+    const todayAttendance = attendance.find(a => new Date(a.date).toDateString() === today);
+    
+    const todayEl = qs('#todayAttendance');
+    if (todayEl) {
+      const sanitize = typeof window.Security !== 'undefined' ? window.Security.escapeHTML : (x) => x;
+      if (todayAttendance) {
+        const eventName = sanitize(todayAttendance.event || 'Event');
+        todayEl.innerHTML = `<div style="color: #16a34a; font-weight: 600;">✓ You've marked attendance for today (${eventName})</div>`;
+      } else {
+        todayEl.innerHTML = '<div style="color: var(--muted);">No attendance marked for today.</div>';
+      }
+    }
+    
+    updateAttendanceStats();
+  }
+
+  function markAttendance() {
+    const today = new Date().toDateString();
+    const attendance = JSON.parse(localStorage.getItem(attendanceKey) || '[]');
+    
+    // Check if already marked today
+    const todayAttendance = attendance.find(a => new Date(a.date).toDateString() === today);
+    if (todayAttendance) {
+      alert('You\'ve already marked attendance for today!');
+      return;
+    }
+    
+    // Sanitize input
+    const sanitize = typeof window.Security !== 'undefined' ? window.Security.sanitizeInput : (x) => x;
+    const eventNameInput = prompt('Enter event name (or leave blank for general attendance):') || 'General Attendance';
+    const eventName = sanitize(eventNameInput);
+    
+    attendance.push({
+      date: new Date().toISOString(),
+      event: eventName,
+      timestamp: Date.now()
+    });
+    
+    localStorage.setItem(attendanceKey, JSON.stringify(attendance));
+    addNotification(`Attendance marked for: ${eventName}`);
+    loadAttendance();
+    updateStats();
+  }
+
+  function viewAttendanceHistory() {
+    const historyDiv = qs('#attendanceHistory');
+    const historyList = qs('#attendanceHistoryList');
+    
+    if (!historyDiv || !historyList) return;
+    
+    const isVisible = historyDiv.style.display !== 'none';
+    historyDiv.style.display = isVisible ? 'none' : 'block';
+    
+    if (!isVisible) {
+      const attendance = JSON.parse(localStorage.getItem(attendanceKey) || '[]');
+      if (attendance.length === 0) {
+        historyList.innerHTML = '<li>No attendance records yet.</li>';
+      } else {
+        historyList.innerHTML = attendance
+          .sort((a, b) => new Date(b.date) - new Date(a.date))
+          .slice(0, 20)
+          .map(a => {
+            const date = new Date(a.date);
+            return `<li>${date.toLocaleDateString()} - ${a.event}</li>`;
+          })
+          .join('');
+      }
+    }
+  }
+
+  function updateAttendanceStats() {
+    const attendance = JSON.parse(localStorage.getItem(attendanceKey) || '[]');
+    const countEl = qs('#attendanceCount');
+    if (countEl) countEl.textContent = attendance.length;
+  }
+
+  /* ---------- Courses ---------- */
+  function loadCourses() {
+    const coursesGrid = qs('#coursesGrid');
+    if (!coursesGrid) return;
+
+    const courses = [
+      {
+        title: 'Medical Terminology Basics',
+        description: 'Learn essential medical terms and their meanings',
+        link: 'https://www.coursera.org/learn/medical-terminology',
+        provider: 'Coursera',
+        category: 'Basics'
+      },
+      {
+        title: 'Anatomy and Physiology',
+        description: 'Comprehensive guide to human body systems',
+        link: 'https://www.khanacademy.org/science/biology/human-biology',
+        provider: 'Khan Academy',
+        category: 'Anatomy'
+      },
+      {
+        title: 'Introduction to Public Health',
+        description: 'Foundations of public health practice',
+        link: 'https://www.edx.org/course/introduction-to-public-health',
+        provider: 'edX',
+        category: 'Public Health'
+      },
+      {
+        title: 'Clinical Research Fundamentals',
+        description: 'Learn the basics of clinical research and study design',
+        link: 'https://www.coursera.org/learn/clinical-research',
+        provider: 'Coursera',
+        category: 'Research'
+      },
+      {
+        title: 'Healthcare Ethics',
+        description: 'Ethical considerations in healthcare practice',
+        link: 'https://www.khanacademy.org/test-prep/mcat/behavior/biological-basis-of-behavior/v/ethics',
+        provider: 'Khan Academy',
+        category: 'Ethics'
+      },
+      {
+        title: 'Biostatistics',
+        description: 'Statistical methods for healthcare professionals',
+        link: 'https://www.coursera.org/learn/biostatistics',
+        provider: 'Coursera',
+        category: 'Statistics'
+      }
+    ];
+
+    coursesGrid.innerHTML = courses.map(course => `
+      <div class="course-item">
+        <h4>${course.title}</h4>
+        <p class="muted">${course.description}</p>
+        <div class="course-meta">
+          <span class="course-category">${course.category}</span>
+          <span class="course-provider">${course.provider}</span>
+        </div>
+        <a href="${course.link}" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="margin-top: 12px; display: inline-block;">
+          Access Course →
+        </a>
+      </div>
+    `).join('');
+
+    // Update completed courses count (simplified - could track actual completions)
+    const completedEl = qs('#coursesCompleted');
+    if (completedEl) {
+      const completed = JSON.parse(localStorage.getItem('hd-courses-completed') || '[]');
+      completedEl.textContent = completed.length;
+    }
+  }
+
+  /* ---------- Study Streak ---------- */
+  function updateStudyStreak() {
+    const streakData = JSON.parse(localStorage.getItem(studyStreakKey) || '{"lastDate": null, "currentStreak": 0}');
+    const today = new Date().toDateString();
+    
+    if (streakData.lastDate !== today) {
+      const lastDate = streakData.lastDate ? new Date(streakData.lastDate) : null;
+      const yesterday = new Date();
+      yesterday.setDate(yesterday.getDate() - 1);
+      
+      if (!lastDate || lastDate.toDateString() === yesterday.toDateString()) {
+        // Continue streak
+        streakData.currentStreak += 1;
+      } else {
+        // Reset streak
+        streakData.currentStreak = 1;
+      }
+      
+      streakData.lastDate = today;
+      localStorage.setItem(studyStreakKey, JSON.stringify(streakData));
+    }
+    
+    const streakEl = qs('#studyStreak');
+    if (streakEl) streakEl.textContent = streakData.currentStreak;
+  }
+
+  /* ---------- Stats Update ---------- */
+  function updateStats() {
+    updateAttendanceStats();
+    updateStudyStreak();
   }
 
   /* ---------- Notifications ---------- */
@@ -54,6 +273,10 @@ const qsa = s => Array.from(document.querySelectorAll(s));
   function renderNotifications() {
     if (!notifsEl) return;
     const list = JSON.parse(localStorage.getItem(notifyKey) || '[]');
+    if (list.length === 0) {
+      notifsEl.innerHTML = '<li>No notifications yet.</li>';
+      return;
+    }
     notifsEl.innerHTML = list
       .map(n => `<li>${new Date(n.ts).toLocaleString()}: ${n.text}</li>`)
       .join('');
@@ -63,17 +286,48 @@ const qsa = s => Array.from(document.querySelectorAll(s));
   form.onsubmit = saveProfile;
 
   logoutBtn && logoutBtn.addEventListener('click', () => {
-    localStorage.removeItem(profileKey);
-    localStorage.removeItem(notifyKey);
-    localStorage.removeItem('hd-logged-in');
-    localStorage.removeItem('hd-current-user');
+    // Use secure session destruction if available
+    if (typeof window.Security !== 'undefined') {
+      window.Security.destroySession();
+    } else {
+      localStorage.removeItem(profileKey);
+      localStorage.removeItem(notifyKey);
+      localStorage.removeItem('hd-logged-in');
+      localStorage.removeItem('hd-current-user');
+      localStorage.removeItem('hd-session');
+      localStorage.removeItem('hd-session-id');
+    }
     alert('Logged out successfully');
     location.href = 'index.html';
   });
 
+  markAttendanceBtn && markAttendanceBtn.addEventListener('click', markAttendance);
+  viewHistoryBtn && viewHistoryBtn.addEventListener('click', viewAttendanceHistory);
+
+  /* ---------- Session Security Check ---------- */
+  function checkDashboardAuth() {
+    if (typeof window.Security !== 'undefined') {
+      if (!window.Security.isSessionValid()) {
+        window.Security.destroySession();
+        alert('Your session has expired. Please login again.');
+        window.location.href = 'login.html';
+        return false;
+      }
+      // Initialize inactivity timer
+      window.Security.initializeInactivityTimer();
+    }
+    return true;
+  }
+
   /* ---------- Init ---------- */
-  loadProfile();
-  renderNotifications();
+  // Check authentication before initializing
+  if (checkDashboardAuth()) {
+    loadProfile();
+    loadAttendance();
+    loadCourses();
+    updateStats();
+    renderNotifications();
+  }
 })();
 
 /* =========================

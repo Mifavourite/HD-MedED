@@ -19,7 +19,6 @@
 
     <div class="header-actions">
       <button id="themeToggle" class="theme-btn">Theme</button>
-      <a href="login.html" class="btn btn-ghost">Member Login</a>
       <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
         <span></span>
         <span></span>
@@ -30,18 +29,18 @@
 
    <nav class="nav container" aria-label="Main nav">
     <ul class="nav-menu">
-      <li><a href="index.html#about">About</a></li>
-      <li><a href="team.html">Team</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="programs.html">Programs</a></li>
+      <li><a href="team.html">Leadership</a></li>
       <li><a href="events.html">Events</a></li>
-      <li><a href="blog.html">Monthly Unifier</a></li>
-      <li><a href="game.html">Medical Game</a></li>
+      <li><a href="resources.html">Resources</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
 
   <main class="container section fade">
     <h2>Contact Us</h2>
-    <p class="muted">Get in touch with Helpers Dynasty. We'd love to hear from you!</p>
+    <p class="muted">We'd love to hear from you!</p>
 
     <div class="contact-section">
       <div class="contact-card">
@@ -57,6 +56,10 @@
         <h3>Follow Us</h3>
         <p class="muted">Connect with us on social media</p>
         <div class="social-links">
+          <a href="#" class="social-link">
+            <span class="social-icon">▶</span>
+            <span>YouTube - Core public health content</span>
+          </a>
           <a href="https://www.instagram.com/helpersdynasty/" target="_blank" rel="noopener noreferrer" class="social-link instagram">
             <span class="social-icon">📷</span>
             <span>Instagram</span>
@@ -67,13 +70,29 @@
           </a>
           <a href="https://www.linkedin.com/company/helpers-dynasty/?viewAsMember=true" target="_blank" rel="noopener noreferrer" class="social-link linkedin">
             <span class="social-icon">👥</span>
-            <span>Linkedin</span>
+            <span>LinkedIn</span>
           </a>
           <a href="https://www.facebook.com/helpersdynastyinternational10" target="_blank" rel="noopener noreferrer" class="social-link facebook">
             <span class="social-icon">👥</span>
             <span>Facebook</span>
           </a>
         </div>
+      </div>
+
+      <div class="contact-card">
+        <h3>Contact Form</h3>
+        <form>
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" required>
+
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required>
+
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+
+          <button type="submit" class="btn btn-primary" style="margin-top: 12px;">Submit</button>
+        </form>
       </div>
     </div>
   </main>

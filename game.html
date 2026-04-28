@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Medical Terminology Game — Helpers Dynasty</title>
+  <title>Public Health Games — Helpers Dynasty</title>
   <link rel="icon" type="image/jpeg" href="ok.jpg" id="favicon">
   <link rel="stylesheet" href="assets/css/styles.css" />
   <link rel="stylesheet" href="assets/css/game.css" />
@@ -40,8 +40,8 @@
   <main class="container section fade">
     <div class="game-container">
       <div class="game-header">
-        <h1>Medical Terminology Challenge</h1>
-        <p class="muted">Test your knowledge of medical terms and learn as you play!</p>
+        <h1>Public Health Games</h1>
+        <p class="muted">Play, learn, and strengthen your public health knowledge through practical scenarios.</p>
       </div>
 
       <div class="game-stats">
@@ -99,6 +99,15 @@
           <label>
             <input type="checkbox" id="randomizeOrder" checked>
             Randomize answer order
+          </label>
+          <label>
+            Game:
+            <select id="gameMode">
+              <option value="outbreak">Outbreak Response</option>
+              <option value="prevention">Prevention and Behavior Change</option>
+              <option value="healthSystems">Health Systems and Coordination</option>
+              <option value="dataInsight">Data and Surveillance</option>
+            </select>
           </label>
           <label>
             Difficulty:

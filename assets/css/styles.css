@@ -1301,3 +1301,100 @@ body.dark .ai-chat-input-container {
     min-width: 80px;
   }
 }
+
+/* =========================
+   Futuristic Tesla Layer
+   ========================= */
+:root{
+  --neon-blue: #3fa9ff;
+  --neon-cyan: #4de6ff;
+  --metal-dark: #0a1020;
+}
+
+body{
+  background:
+    radial-gradient(circle at 12% 8%, rgba(63,169,255,.12), transparent 30%),
+    radial-gradient(circle at 88% 5%, rgba(77,230,255,.08), transparent 28%),
+    linear-gradient(180deg,var(--bg),#edf3ff);
+}
+
+.site-header,
+.nav{
+  backdrop-filter: blur(10px);
+}
+
+.site-header{
+  background: linear-gradient(135deg, rgba(255,255,255,.7), rgba(255,255,255,.35));
+  border: 1px solid rgba(63,169,255,.14);
+  border-radius: 16px;
+  padding: 14px 18px;
+  box-shadow: 0 10px 34px rgba(11,61,145,.15);
+}
+
+.nav-menu a{
+  border: 1px solid transparent;
+}
+
+.nav-menu a:hover{
+  border-color: rgba(63,169,255,.45);
+  box-shadow: 0 0 18px rgba(63,169,255,.22);
+  background: linear-gradient(135deg, rgba(63,169,255,.12), rgba(77,230,255,.08));
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(120deg, rgba(10,16,32,.7), rgba(11,61,145,.35), rgba(77,230,255,.2));
+  z-index:1;
+}
+
+.btn-primary{
+  background: linear-gradient(135deg, var(--gold), #ffd86f);
+  box-shadow: 0 10px 28px rgba(212,175,55,.34), 0 0 0 1px rgba(255,255,255,.35) inset;
+}
+
+.btn-outline{
+  border-color: var(--neon-blue);
+  color: var(--blue);
+}
+
+.btn-outline:hover{
+  background: linear-gradient(135deg, rgba(63,169,255,.9), rgba(77,230,255,.85));
+  color: #031326;
+  border-color: transparent;
+  box-shadow: 0 12px 34px rgba(63,169,255,.35);
+}
+
+.card{
+  background:
+    linear-gradient(160deg, rgba(255,255,255,.94), rgba(244,250,255,.78));
+  border: 1px solid rgba(63,169,255,.18);
+  box-shadow: 0 14px 38px rgba(11,61,145,.13);
+}
+
+.card:hover{
+  transform: translateY(-6px);
+  border-color: rgba(63,169,255,.45);
+  box-shadow: 0 20px 55px rgba(11,61,145,.2), 0 0 0 1px rgba(77,230,255,.22) inset;
+}
+
+.section h2{
+  text-shadow: 0 2px 14px rgba(63,169,255,.2);
+}
+
+body.dark{
+  background:
+    radial-gradient(circle at 15% 8%, rgba(63,169,255,.15), transparent 30%),
+    radial-gradient(circle at 88% 5%, rgba(77,230,255,.08), transparent 28%),
+    linear-gradient(180deg,#050b18,#081225);
+}
+
+body.dark .site-header{
+  background: linear-gradient(135deg, rgba(7,18,41,.86), rgba(7,18,41,.65));
+  border-color: rgba(63,169,255,.35);
+}
+
+body.dark .nav-menu a:hover{
+  background: linear-gradient(135deg, rgba(63,169,255,.22), rgba(77,230,255,.14));
+}

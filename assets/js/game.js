@@ -99,6 +99,29 @@ const PublicHealthGameDB = (() => {
           "Drive resource allocation using real-time indicators"
         ]
       }
+    },
+    {
+      mode: "medicalTerminology",
+      label: "Medical Terminologies",
+      hazards: ["cardiology", "dermatology", "neurology", "epidemiology", "immunology"],
+      settings: ["health lecture", "community clinic", "public health training", "hospital rounds", "student workshop"],
+      actions: {
+        easy: [
+          "Match common medical terms with their basic meanings",
+          "Identify root words used in routine health communication",
+          "Differentiate prevention terms from treatment terms"
+        ],
+        medium: [
+          "Interpret medical prefixes and suffixes in context",
+          "Connect disease-related terms to body systems",
+          "Use terminology correctly in public health case discussions"
+        ],
+        hard: [
+          "Analyze complex terms by combining roots, prefixes, and suffixes",
+          "Interpret advanced terminology used in surveillance reports",
+          "Apply precise terminology for multidisciplinary communication"
+        ]
+      }
     }
   ];
 
@@ -143,7 +166,7 @@ const PublicHealthGameDB = (() => {
     };
   }
 
-  function generateBank(size = 1000) {
+  function generateBank(size = 2000) {
     const bank = [];
     const levels = ["easy", "medium", "hard"];
 
@@ -160,7 +183,7 @@ const PublicHealthGameDB = (() => {
     return bank;
   }
 
-  const QUESTION_BANK = generateBank(1000);
+  const QUESTION_BANK = generateBank(2000);
 
   function getQuestion(mode = "outbreak", difficulty = "medium") {
     const pool = QUESTION_BANK.filter(q => q.mode === mode && q.difficulty === difficulty);

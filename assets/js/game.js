@@ -2,7 +2,7 @@
    Public Health Game Logic
 ========================= */
 
-// Use the qs and qsa already defined in script.js — DO NOT redefine them here
+// Use the qs and qsa already defined in script.js - DO NOT redefine them here
 // const qs = s => document.querySelector(s);
 // const qsa = s => Array.from(document.querySelectorAll(s));
 
@@ -183,7 +183,7 @@ window.PublicHealthGameDB = PublicHealthGameDB;
   let totalQuestions = 0;
   let currentQuestion = null;
 
-  // DOM elements — using qs/qsa from script.js
+  // DOM elements - using qs/qsa from script.js
   const scoreEl = qs('#score');
   const correctEl = qs('#correct');
   const streakEl = qs('#streak');
@@ -261,7 +261,7 @@ window.PublicHealthGameDB = PublicHealthGameDB;
     currentQuestion.correctIndex = correctedIndex;
 
     answerBtns.forEach((btn, index) => {
-      btn.textContent = answerOptions[index] || '—';
+      btn.textContent = answerOptions[index] || '-';
       btn.disabled = false;
       btn.classList.remove('correct', 'incorrect', 'selected');
     });

@@ -2,25 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>About Us - Helpers Dynasty</title>
-  <meta name="description" content="Learn about Helpers Dynasty's mission, vision, values, and public health approach." />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Monthly Unifier - Helpers Dynasty</title>
   <link rel="icon" type="image/jpeg" href="ok.jpg" id="favicon">
-  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="assets/js/script.js" defer></script>
+  <meta name="description" content="Monthly Unifier — community updates, stories, and insights from Helpers Dynasty." />
 </head>
 <body>
   <header class="site-header container">
     <a class="brand" href="index.html">
-      <img src="ok.jpg" class="logo" alt="Helpers Dynasty logo" />
+      <img src="ok.jpg" alt="HD logo" class="logo">
       <div class="brand-text">
         <div class="brand-name">Helpers Dynasty (HD)</div>
         <div class="brand-sub">Unity in Service · Fellowship</div>
       </div>
     </a>
+
     <div class="header-actions">
       <button id="themeToggle" class="theme-btn">Theme</button>
       <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
     </div>
   </header>
@@ -35,39 +39,28 @@
     </ul>
   </nav>
 
-  <main class="container section fade">
-    <h2>About Us</h2>
-    <article class="card about-content">
-      <p class="muted">Helpers Dynasty (HD) is a global public health movement built on compassion, purpose, and community impact.</p>
-      <p class="muted">We promote public health awareness and strengthen community resilience by making health knowledge simple, practical, and accessible to everyone.</p>
-
-      <h3>Our Mission</h3>
-      <p class="muted">To educate. To serve. To strengthen communities.</p>
-
-      <h3>Our Vision</h3>
-      <p class="muted">To raise a generation that understands health deeply, applies it practically in daily life, and leads with compassion to create meaningful impact.</p>
-
-      <h3>Our Core Values</h3>
-      <ul class="about-list">
-        <li>Unity in Service</li>
-        <li>Fellowship</li>
-        <li>Excellence in Public Health</li>
-      </ul>
-
-      <h3>Our Approach</h3>
-      <p class="muted">We deliver public health education in relatable ways that connect with everyday life. Inspired by global public health standards, we use technology and community engagement to empower youth and care for the elderly.</p>
-      <p class="muted">Every year during our anniversary, we visit the elderly with gifts and learn valuable words of wisdom from them.</p>
-      <p class="muted">We are more than an organization — Helpers Dynasty is a movement committed to building people of value, discipline, and purpose.</p>
-    </article>
+  <main>
+    <section class="container section fade">
+      <h2>Monthly Unifier</h2>
+      <p class="muted">Community updates, stories, and insights from Helpers Dynasty.</p>
+      <p class="muted">
+        All scenarios are fictional and created for public health education and discussion purposes only.
+      </p>
+      <!-- This is where JS will render posts -->
+      <div class="blog-list"></div>
+    </section>
   </main>
 
   <button id="backToTop" class="back-to-top">↑</button>
+
   <footer class="site-footer">
     <div class="container">
       <p>© <span id="thisYear"></span> Helpers Dynasty. All rights reserved.</p>
+      <p><a href="contact.html">Contact Us</a></p>
     </div>
   </footer>
 
-  <script src="assets/js/script.js" defer></script>
+  <script src="assets/js/blog-data.js"></script>
+  <script src="assets/js/blog.js"></script>
 </body>
 </html>
